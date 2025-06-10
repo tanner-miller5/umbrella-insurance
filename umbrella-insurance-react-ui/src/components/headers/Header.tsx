@@ -66,6 +66,7 @@ export default function Header() {
     let itemsClassName = defaultButtonStyle;
     let cartClassName = defaultButtonStyle;
     let checkoutClassName = defaultButtonStyle;
+    let aboutUsClassName = defaultButtonStyle;
     if (currentPage === '/faq') {
         faqClassName = activeButtonStyle;
     } else if (currentPage === '/announcements') {
@@ -118,6 +119,8 @@ export default function Header() {
         cartClassName = activeButtonStyle;
     } else if (currentPage === '/checkout') {
         checkoutClassName = activeButtonStyle;
+    } else if (currentPage === '/aboutUs') {
+        aboutUsClassName = activeButtonStyle;
     }
     const env = useSelector((state:RootState) => {
         return state.environment.env;
@@ -368,6 +371,10 @@ export default function Header() {
         closeNavMenu();
         navigate("/");
     }
+    function onClickAboutUs() {
+        closeNavMenu();
+        navigate("/aboutUs");
+    }
     let endDateTime: string | undefined = useSelector((state: RootState)=>{
         return state.user.endDateTime;
     });
@@ -468,6 +475,7 @@ export default function Header() {
             {didUserLoad && <li onClick={onClickItems} className={itemsClassName}>Items</li>}
             {didUserLoad && <li onClick={onClickCheckout} className={checkoutClassName}>Checkout</li>}
             {didUserLoad && <li onClick={onClickCart} className={cartClassName}>Cart</li>}
+            <li onClick={onClickAboutUs} className={aboutUsClassName}>About Us</li>
         </ul>
     </>)
 };
