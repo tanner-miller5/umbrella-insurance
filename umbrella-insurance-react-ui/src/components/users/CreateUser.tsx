@@ -376,9 +376,9 @@ export default function CreateUser() {
                         defaultValue={""}
                         onChange={(event)=>{dispatch(updateTwoFactorAuthType(event.target.value))}}>
                         <option disabled value="">-</option>
-                        <option value="email">Email</option>
+                        {/*<option value="email">Email</option>
                         <option value="text">Text</option>
-                        <option value="app">Authenticator App</option>
+                        <option value="app">Authenticator App</option>*/}
                         <option value="none">None</option>
                 </select>
                 <div className='flexInner'>

@@ -144,9 +144,9 @@ export default function ChangeTwoFactorAuth(){
                     defaultValue={twoFactorAuthType ? twoFactorAuthType : ""}
                     onChange={(event)=>{dispatch(updateTmpTwoFactorAuthType(event.target.value))}}>
                     <option disabled value="">-</option>
-                    <option value="email">Email</option>
+                    {/* <option value="email">Email</option> 
                     <option value="text">Text</option>
-                    <option value="app">Authenticator App</option>
+                    <option value="app">Authenticator App</option> */}
                     <option value="none">None</option>
                 </select>
             </div>
