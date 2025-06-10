@@ -19,7 +19,7 @@ export default function TermsAndConditions({isOpen}:TermsAndConditionsProps){
     return (
         <div className='overlay' hidden={!isOpen}>
             <div className='userAgreementBox'>
-                <h1>Terms and Conditions for Umbrella Insurance Inc.</h1>
+                <h1>Terms and Conditions for Umbrella Insurance</h1>
                 <p>Effective Date: February 21, 2025
 Last Updated: February 21, 2025  
 Welcome to www.umbrella-insurance.com ("we," "us," or "our"). These Terms and Conditions ("T&C" or "Terms") govern your access to and use of our website www.umbrella-insurance.com (the "Site") and our online gambling services (the "Services"). By accessing or using the Site or Services, you agree to be bound by these Terms. If you do not agree, please do not use our Site or Services.

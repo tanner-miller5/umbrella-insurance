@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022  Umbrella Insurance Inc.
+ * Copyright (c) 2022  Umbrella Insurance
  */
 
 package com.umbrella.insurance.config;

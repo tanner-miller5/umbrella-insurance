@@ -1,3 +1,5 @@
 .DS_Store
 /.idea
 umbrella-insurance-react-ui/package-lock.json
+/umbrella-insurance-backend/target
+/umbrella-insurance-core/target

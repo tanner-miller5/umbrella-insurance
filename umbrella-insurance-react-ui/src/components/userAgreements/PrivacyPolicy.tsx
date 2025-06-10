@@ -18,11 +18,11 @@ export default function PrivacyPolicy({isOpen}:PrivacyPolicyProps){
     return (       
         <div className='overlay' hidden={!isOpen}>
             <div className='userAgreementBox'>
-                <h1>Privacy Policy for Umbrella Insurance Inc.</h1>
+                <h1>Privacy Policy for Umbrella Insurance</h1>
                 <p>
 Effective Date: February 21, 2025
 Last Updated: February 21, 2025  
-At Umbrella Insurance Inc. ("we," "us," or "our"), we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.umbrella-insurance.com (the "Site") or use our online gambling services (the "Services"). By accessing or using our Site and Services, you agree to the terms of this Privacy Policy.
+At Umbrella Insurance ("we," "us," or "our"), we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website www.umbrella-insurance.com (the "Site") or use our online gambling services (the "Services"). By accessing or using our Site and Services, you agree to the terms of this Privacy Policy.
 1. Information We Collect
 We collect information that you provide to us directly, as well as information collected automatically when you use our Services. The types of information we may collect include:
 a. Personal Information You Provide:
