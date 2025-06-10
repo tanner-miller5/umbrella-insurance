@@ -1,0 +1,11 @@
+INSERT INTO public.period_types (period_type_name) VALUES ('end');
+INSERT INTO public.period_types (period_type_name) VALUES ('half');
+INSERT INTO public.period_types (period_type_name) VALUES ('inning');
+INSERT INTO public.period_types (period_type_name) VALUES ('period');
+INSERT INTO public.period_types (period_type_name) VALUES ('quarter');
+INSERT INTO public.period_types (period_type_name) VALUES ('set');
+INSERT INTO public.period_types (period_type_name) VALUES ('game');
+INSERT INTO public.period_types (period_type_name) VALUES ('match');
+INSERT INTO public.period_types (period_type_name) VALUES ('season');
+INSERT INTO public.period_types (period_type_name) VALUES ('round');
+INSERT INTO public.period_types (period_type_name) VALUES ('hole');

@@ -1,0 +1,105 @@
+Purpose of Your Invention
+What problem does your invention solve? Do not explain here HOW your invention solves the problem. Discuss ONLY the problem itself. Please answer in complete sentences.
+
+Currently individuals are locked into very general insurance policies and lack customization and the ability to negotiate. Existing policies can be continuous and hard to verify resulting in long periods before the benefit is paid out.
+
+In a few sentences, please describe how your invention solves the problem described above.
+
+With the insurance exchange every individual is able to create binary insurance policies with exact ending dates. The exchange can more easily verify claims because the contracts are based on larger perils and not smaller perils. Policy premiums and policy limits are put into escrow until the policy has expired or the individual seeking coverage cancels the contract before insured by another individual(s) or the peril is no longer relevant before the policy being insured. This above system creates faster payouts because claims can be verified quicker and individuals can negotiate which perils and policy limits are acceptable.
+
+Please number each item according to its number on any accompanying drawing(s).
+1. Insurer interface for specifying minimum coverage criteria.
+2. Insured interface for specifying minimum coverage criteria.
+3. Exchange system for matching the insured and the insurer.
+4. Escrow system for paying out claims or premiums.
+
+
+Please describe the relationship between your invention's components, elements or steps. Please use the Item Numbers you assigned to each item on the previous page, when you listed all of them.
+
+The 1.(insured) and 2. (insurer) use the 3.(Insurance Exchange) to create a policy that meets both the 1. (insured) and 2. (insurers) needs. Once a policy is made on on the 3. (insurance exchange) the premiums and policy limit are placed into 4.(escrow system) until the policy has expired or the peril has happened. Once the coverage is expired the 4. (escrow system) pays out either the policy limit to 1. (insured) or the premium to the 2. (insurer). 
+
+Please describe the logic (gates, if-then relationships, subroutines, etc.) required to create, implement or practice your invention.
+
+
+1. The insured specifies the premium they are willing to pay, the peril they want covered, and the policy limit they want. The system will calculate the probability of the peril happening based on the information provided by the insured.
+
+2. The insurer specifies the policy limit they are willing to provide, the peril they will cover, and the premium they want. The system will calculate the probablilty of the peril happening based on the information provided by the insurer.
+
+If 1 and 2 are compatible based on the insured and insurers criteria a policy is created between the insured and insurer. 
+
+If the insured is not fully covered find an additional insurer.
+
+If the insurer still has a policy limit after covering the insured find another individual to insurer. 
+
+Repeat until both the insured and insurer have their policies created.
+
+If the peril is no longer valid before a policy can be created return the premium or policy limit in escrow to the insured or insurer. 
+
+If an insurer or insured decide to cancel a pending policy waiting to get matched return the premium or policy limit from escrow to the party canceling.
+
+if an insurer or insured cancel after a policy has been created the system will try to find another insurer or insured to fill the position of the party canceling. Cancel is not guaranteed after a policy is created.
+
+If the peril happens pay the policy limit out to the insured from the escrow system.
+
+If the peril does not occur during coverage pay the premium out to the insurer from the escrow system.
+
+The escrow system verifies claims based on publicly available information.
+
+
+How Does Your Invention Work?
+
+How do the components, steps or elements of your invention work individually and together to cause the whole invention to perform its desired function? This section is extremely important and should be completed carefully. See Help to learn more.
+
+
+1. The insured specifies the premium they are willing to pay, the peril they want covered, and the policy limit they want. The system will calculate the probability of the peril happening based on the information provided by the insured.
+
+2. The insurer specifies the policy limit they are willing to provide, the peril they will cover, and the premium they want. The system will calculate the probablilty of the peril happening based on the information provided by the insurer.
+
+If 1 and 2 are compatible based on the insured and insurers criteria a policy is created between the insured and insurer. 
+
+If the insured is not fully covered find an additional insurer.
+
+If the insurer still has a policy limit after covering the insured find another individual to insurer. 
+
+Repeat until both the insured and insurer have their policies created.
+
+If the peril is no longer valid before a policy can be created return the premium or policy limit in escrow to the insured or insurer. 
+
+If an insurer or insured decide to cancel a pending policy waiting to get matched return the premium or policy limit from escrow to the party canceling.
+
+if an insurer or insured cancel after a policy has been created the system will try to find another insurer or insured to fill the position of the party canceling. Cancel is not guaranteed after a policy is created.
+
+If the peril happens pay the policy limit out to the insured from the escrow system.
+
+If the peril does not occur during coverage pay the premium out to the insurer from the escrow system.
+
+The escrow system verifies claims based on publicly available information.
+
+
+How to Make the Invention
+How would a person make the invention? Answering this question is extremely important to enable your Provisional Application to function as it should. Please answer carefully and in as much detail as possible.
+
+A person can develop a software user interface to accept the insured's minimum policy criteria and premium into escrow. This could be a website, web application, phone application, etc.
+
+A person can develop a software user interface to accept the insurer's minimum policy criteria and policy limit into escrow. This could be a website, web application, phone application, etc.
+
+A person creates a backend computer server software for the betting exchange to match pending policies together based the insured and insurer's minimum policy criteria.
+
+A person creates a backend computer server software to accept premium and policy limits into an escrow account for a policy. The person writes software to pull public data from the internet to determine if the peril occurred during the coverage period.
+
+The insurance exchange makes money by charging a commission on the premium or policy limit.
+
+How can the components or elements be shuffled, interchanged, or reconfigured to cause the invention to perform an identical or similar function? (This is optional, but answering can potentially give you more protection in the future.) Please use complete sentences.
+
+The insurance exchange system can match insurers and insured together in a variety of ways based on the insurers and insured policy criteria. If the insured expects a small policy limit and to pay a high premium and the insurer is willing to pay a small policy limit and receive a high premium then the insured and insurer have different probabilities for the peril to happen and there is a range of possible premiums or policy limits for the policy created between the two parties.
+
+
+How to Use the Invention
+How would a person use the invention to solve the problem that your invention solves? This is another very important section: Please be specific about the steps involved.
+A person looking to protect themselves from peril over a period of time enters the criteria into the system and deposits a premium into escrow. The insurance exchange looks for a matching insurer to hedge the insured risk.
+
+An insurance company is looking for customers and enters into the system different perils, policy limits, and premiums as policy criteria for the insurance exchange to match against. The insurance company is able to make money on most policies and protect the insured in the chance of the peril happening by paying out the policy limit.
+
+Other Invention Uses
+Describe how this invention can be used in a different way or in another field of technology.
+The insurance exchange could be run physically by writing down the insured and insurers policy criteria. Collecting the money for premium and policy limits physically and put them into an escrow safe. The peril over the coverage period could be verified physically by sending an employee from the insurance exchange. 

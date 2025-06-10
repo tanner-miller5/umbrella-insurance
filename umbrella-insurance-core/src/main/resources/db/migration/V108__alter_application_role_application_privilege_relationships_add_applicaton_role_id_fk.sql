@@ -1,0 +1,4 @@
+ALTER TABLE public.application_role_application_privilege_relationships ADD CONSTRAINT
+app_role_app_privilege_relationships_app_role_id_fk FOREIGN KEY
+(application_role_id) REFERENCES public.application_roles(application_role_id)
+ON DELETE SET NULL ON UPDATE SET NULL;

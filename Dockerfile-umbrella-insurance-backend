@@ -1,0 +1,37 @@
+#
+# Build stage
+#
+FROM maven:eclipse-temurin AS build
+RUN apt update && apt upgrade -y
+
+RUN java -version | echo
+RUN adduser spring
+
+COPY umbrella-insurance-backend/src /home/spring/umbrella-insurance-backend/src
+COPY umbrella-insurance-backend/pom.xml /home/spring/umbrella-insurance-backend
+COPY umbrella-insurance-backend/checkstyle.xml /home/spring/umbrella-insurance-backend
+COPY umbrella-insurance-core/src /home/spring/umbrella-insurance-core/src
+COPY umbrella-insurance-core/pom.xml /home/spring/umbrella-insurance-core/pom.xml
+COPY umbrella-insurance-core/checkstyle.xml /home/spring/umbrella-insurance-core/checkstyle.xml
+
+RUN chown -R spring /home/spring
+RUN echo $JAVA_HOME
+RUN apt install -y openjdk-17-jdk openjdk-17-jre
+WORKDIR /home/spring/umbrella-insurance-core
+RUN su -l spring -c 'mvn -f /home/spring/umbrella-insurance-core/pom.xml  \
+    clean install -Dmaven.test.skip=true'
+
+WORKDIR /home/spring/umbrella-insurance-backend
+RUN su -l spring -c 'mvn -f /home/spring/umbrella-insurance-backend/pom.xml  \
+    clean install -Dmaven.test.skip=true'
+
+USER spring:spring
+
+VOLUME /tmp
+
+ENTRYPOINT ["java", "-jar", "/home/spring/umbrella-insurance-backend/target/umbrella-insurance-backend.war"]
+
+EXPOSE 8080
+
+HEALTHCHECK --start-period=120s --interval=30s --timeout=10s --retries=3 \
+    CMD curl -f http://localhost:8080/actuator/health || exit 1

@@ -1,0 +1,45 @@
+import { configureStore, combineSlices } from "@reduxjs/toolkit";
+import counterReducer, { counterSlice, CounterState } from "../reducers/CounterReducer";
+import userReducer, { userSlice, UserState } from "../reducers/UserReducer";
+import LoadingReducer, { loadingSlice, LoadingState } from "../reducers/LoadingReducer";
+import EnvironmentReducer, { environmentSlice, EnvironmentState } from "../reducers/EnvironmentReducer";
+import { appSlice, AppState } from "../reducers/AppReducer";
+import { statSlice, StatState } from "../reducers/StatReducer";
+import { announcementSlice, AnnouncementState } from "../reducers/AnnouncementReducer";
+import { faqSlice, FaqState } from "../reducers/FaqReducer";
+import { reviewSlice, ReviewState } from "../reducers/ReviewsReducer";
+
+export const rootReducer = combineSlices(counterSlice, userSlice, loadingSlice, 
+    environmentSlice, appSlice, statSlice, announcementSlice, faqSlice, reviewSlice)
+
+export class RootState {
+    counter: CounterState;
+    user: UserState;
+    loading: LoadingState;
+    environment: EnvironmentState;
+    app: AppState;
+    stat: StatState;
+    announcement: AnnouncementState;
+    faq: FaqState;
+    review: ReviewState;
+    constructor() {
+        this.counter = new CounterState();
+        this.user = new UserState();
+        this.loading = new LoadingState();
+        this.environment = new EnvironmentState();
+        this.app = new AppState();
+        this.stat = new StatState();
+        this.announcement = new AnnouncementState();
+        this.faq = new FaqState();
+        this.review = new ReviewState();
+    }
+}
+
+export const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => {
+        return getDefaultMiddleware({
+            serializableCheck: false,
+        })
+    }
+});

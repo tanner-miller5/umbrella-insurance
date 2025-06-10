@@ -1,0 +1,17 @@
+FROM node:18-alpine
+RUN apk upgrade --available
+RUN mkdir /app
+COPY umbrella-insurance-react-ui/public /app/public
+COPY umbrella-insurance-react-ui/src /app/src
+COPY umbrella-insurance-react-ui/package.json /app/package.json
+COPY umbrella-insurance-react-ui/tsconfig.json /app/tsconfig.json
+WORKDIR /app
+# Declaring env
+ENV NODE_ENV=production
+RUN npm update
+RUN npm install
+#RUN mkdir -p /app/node_modules/.cache && chmod -R 777 /app/node_modules/.cache
+#RUN addgroup -S spring && adduser -S spring -G spring
+#USER spring:spring
+CMD ["npm","start"]
+EXPOSE 3000

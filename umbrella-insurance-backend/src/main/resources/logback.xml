@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2022  Umbrella Insurance Inc.
+  -->
+
+<configuration debug="false">
+
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="Console">
+    <encoder>
+      <pattern>{%n  "log":{%n    "timestamp":"%d{yyy-MM-dd HH:mm:ss VV, UTC}",%n    "logLevel":"%level",%n    "callingLoggerName":"%logger{0}",%n    "callingMethodName":"%method",%n    "message":"%msg"%n  }%n}%n</pattern>
+    </encoder>
+  </appender>
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="ROLLING">
+    <encoder>
+      <pattern>{"log":{"timestamp":"%d{yyy-MM-dd HH:mm:ss VV, UTC}","logLevel":"%level","callingLoggerName":"%logger{0}","callingMethodName":"%method","message":"%msg"}}%n</pattern>
+    </encoder>
+    <file>application.log
+    </file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <fileNamePattern>application-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+      <maxFileSize>10MB</maxFileSize>
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>10GB</totalSizeCap>
+    </rollingPolicy>
+  </appender>
+  <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+    <http>
+      <url>http://loki:3100/loki/api/v1/push</url>
+      <tenantId>umbrella-insuranceloki</tenantId>
+    </http>
+    <format>
+      <label>
+        <pattern>app=%X{appName:-umbrella-insurance-backend},,,
+          host=${HOSTNAME},,,
+          level=%level,,,
+          username=%X{username:-unknown},,,
+          email=%X{email:-unknown},,,
+          phoneNumber=%X{phoneNumber:-unknown},,,
+          currentRequestNumber=%X{currentRequestNumber:-unknown},,,
+          method=%X{method:-unknown},,,
+          contentType=%X{contentType:-unknown},,,
+          responseStatus=%X{responseStatus:-unknown},,,
+          url=%X{url:-unknown},,,
+          session=%X{session:-unknown},,,
+          userAgent=%X{userAgent:-unknown},,,
+          ip=%X{ip:-unknown},,,
+          longitude=%X{longitude:-unknown},,,
+          latitude=%X{latitude:-unknown},,,
+          accuracy=%X{accuracy:-unknown}
+        </pattern>
+        <pairSeparator>,,,</pairSeparator>
+        <readMarkers>true</readMarkers>
+      </label>
+      <message>
+        <pattern>
+          {
+          "level":"%level",
+          "class":"%logger{36}",
+          "thread":"%thread",
+          "message": "%message"
+          }
+        </pattern>
+      </message>
+    </format>
+  </appender>
+  <root level="INFO">
+    <appender-ref ref="Console"/>
+    <appender-ref ref="ROLLING"/>
+    <appender-ref ref="LOKI" />
+  </root>
+
+</configuration>

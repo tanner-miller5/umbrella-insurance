@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS public.rewards (
+    reward_id int8 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1 NO CYCLE) NOT NULL,
+    reward_name varchar NOT NULL,
+    CONSTRAINT rewards_pk PRIMARY KEY (reward_id),
+    CONSTRAINT reward_name UNIQUE (reward_name)
+);

@@ -1,0 +1,4 @@
+ALTER TABLE public.account_balance_transactions ADD CONSTRAINT
+account_balance_transactions_status_id_fk FOREIGN KEY 
+(account_balance_transaction_status_id) REFERENCES public.account_balance_transaction_statuses(account_balance_transaction_status_id) 
+ON DELETE SET NULL ON UPDATE SET NULL;

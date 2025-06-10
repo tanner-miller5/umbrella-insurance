@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS public."groups" (
+    group_id int8 GENERATED ALWAYS AS IDENTITY( INCREMENT BY 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1 NO CYCLE) NOT NULL,
+    group_name varchar NOT NULL,
+    CONSTRAINT groups_pk PRIMARY KEY (group_id),
+    CONSTRAINT groups_unique UNIQUE (group_name)
+);

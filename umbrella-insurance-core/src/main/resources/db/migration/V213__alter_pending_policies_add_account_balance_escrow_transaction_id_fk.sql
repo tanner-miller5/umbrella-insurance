@@ -1,0 +1,4 @@
+ALTER TABLE public.pending_policies ADD CONSTRAINT
+pending_policies_account_balance_escrow_transaction_id_fk FOREIGN KEY
+(account_balance_escrow_transaction_id) REFERENCES public.account_balance_transactions(account_balance_transaction_id)
+ON DELETE SET NULL ON UPDATE SET NULL;

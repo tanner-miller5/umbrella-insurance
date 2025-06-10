@@ -1,0 +1,265 @@
+<mxfile host="app.diagrams.net" modified="2023-10-21T23:58:20.798Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15" etag="94d8cdSHtNMhVs8_7DcP" version="22.0.6" type="google">
+  <diagram id="2IJzWb8pnFAY8zRLbigD" name="Page-1">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xSXBDfNWIm1OBwbBtW4V-3" target="P3gHFLwZ7kK-pXSkKa9D-74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xSXBDfNWIm1OBwbBtW4V-3" value="Start" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.start_1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="320" y="-180" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xSXBDfNWIm1OBwbBtW4V-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="xSXBDfNWIm1OBwbBtW4V-5" target="P3gHFLwZ7kK-pXSkKa9D-76">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xSXBDfNWIm1OBwbBtW4V-13" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="xSXBDfNWIm1OBwbBtW4V-12">
+          <mxGeometry x="-0.2235" y="5" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="xSXBDfNWIm1OBwbBtW4V-5" target="P3gHFLwZ7kK-pXSkKa9D-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-10" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-9">
+          <mxGeometry x="-0.4286" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xSXBDfNWIm1OBwbBtW4V-5" value="Is order in pending queue" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="320" y="190" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-350" y="540" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="xSXBDfNWIm1OBwbBtW4V-11" target="P3gHFLwZ7kK-pXSkKa9D-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="xSXBDfNWIm1OBwbBtW4V-11" value="Remove bet from pending queue. Return bet escrow amount to bettor." style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="10" y="120" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-1" value="Cancel Bet" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="-220" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-3" target="xSXBDfNWIm1OBwbBtW4V-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-5" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-4">
+          <mxGeometry x="-0.64" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-3" value="Is user using abusive betting patterns" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="320" y="60" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-6" value="User&#39;s account value, escrow value, and order to fill storage" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="180" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;jumpStyle=line;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-15" target="P3gHFLwZ7kK-pXSkKa9D-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-15" target="P3gHFLwZ7kK-pXSkKa9D-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-15" value="Create &amp;nbsp;new order to fill to replace your current bet" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="320" y="340" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-19" target="P3gHFLwZ7kK-pXSkKa9D-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-58" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-38">
+          <mxGeometry x="-0.3398" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-19" target="P3gHFLwZ7kK-pXSkKa9D-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-57" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-56">
+          <mxGeometry x="-0.24" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-19" value="Does bet&lt;br&gt;&amp;nbsp;order &lt;br&gt;match with another&lt;br&gt;&amp;nbsp;bet order in&lt;br&gt;&amp;nbsp;the pending&lt;br&gt;&amp;nbsp;queue?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="290" y="585" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-20" target="P3gHFLwZ7kK-pXSkKa9D-32">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="820" y="670" />
+              <mxPoint x="820" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-60" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-40">
+          <mxGeometry x="-0.2" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-20" target="P3gHFLwZ7kK-pXSkKa9D-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-61" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-53">
+          <mxGeometry x="-0.6537" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-20" value="Is partial&lt;br&gt;&amp;nbsp;amount match?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="620" y="605" width="140" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-21" target="P3gHFLwZ7kK-pXSkKa9D-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-21" value="new order to&lt;br&gt;&amp;nbsp;fill&amp;nbsp;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="320" y="860" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-22" target="P3gHFLwZ7kK-pXSkKa9D-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-22" value="Split order" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=offPageConnector;rounded=0;size=0.5;" vertex="1" parent="1">
+          <mxGeometry x="660" y="1060" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-23" target="P3gHFLwZ7kK-pXSkKa9D-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-23" value="Matched&lt;br&gt;&amp;nbsp;order &lt;br&gt;to fill" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="490" y="635" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-24" target="P3gHFLwZ7kK-pXSkKa9D-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-24" value="&lt;span style=&quot;font-size: 12.000001px;&quot;&gt;Match order to fill&lt;/span&gt;" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=offPageConnector;rounded=0;size=0.5;" vertex="1" parent="1">
+          <mxGeometry x="340" y="490" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-25" value="Notify user bet is waiting to be cancelled" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="90" y="615" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-55" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-26" target="P3gHFLwZ7kK-pXSkKa9D-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-26" value="Notify user that partial amount of their order has been cancelled" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1040" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-27" target="P3gHFLwZ7kK-pXSkKa9D-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-27" target="P3gHFLwZ7kK-pXSkKa9D-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-65" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-64">
+          <mxGeometry x="-0.3533" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-27" value="Was split successful?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1010" width="160" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-28" target="P3gHFLwZ7kK-pXSkKa9D-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-69" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-51">
+          <mxGeometry x="-0.248" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-28" target="P3gHFLwZ7kK-pXSkKa9D-66">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-68" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-67">
+          <mxGeometry x="-0.1902" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-28" value="&lt;span style=&quot;font-size: 12.000001px;&quot;&gt;Is loop limit?&lt;/span&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="90" y="840" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.85;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-32" target="P3gHFLwZ7kK-pXSkKa9D-34">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1010" y="620" />
+              <mxPoint x="1010" y="667" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-31" target="P3gHFLwZ7kK-pXSkKa9D-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-31" value="Create matched bet and add to matched queue" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="880" y="670" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-32" value="Remove matched order to fill from pending queue" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="880" y="570" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-33" value="Matched Bet Order Queue" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="650" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.85;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-34" target="P3gHFLwZ7kK-pXSkKa9D-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-34" value="Pending Bet Order Queue" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="590" width="130" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-35" value="End" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="900" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-36" target="P3gHFLwZ7kK-pXSkKa9D-43">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-36" value="Is new matched bet order stored?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="615" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.85;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-37" target="P3gHFLwZ7kK-pXSkKa9D-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-37" value="Matched &lt;br&gt;bet order" style="shape=parallelogram;html=1;strokeWidth=2;perimeter=parallelogramPerimeter;whiteSpace=wrap;rounded=1;arcSize=12;size=0.23;" vertex="1" parent="1">
+          <mxGeometry x="880" y="800" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-45" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-43" target="P3gHFLwZ7kK-pXSkKa9D-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-43" value="Notify user bet is canceled" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="750" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-70" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-66" target="P3gHFLwZ7kK-pXSkKa9D-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-66" value="original order to&lt;br&gt;&amp;nbsp;fill&amp;nbsp;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.stored_data;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="210" y="490" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-74" target="P3gHFLwZ7kK-pXSkKa9D-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-74" value="User enters in the amount of bet they want to cancel [cA]" style="html=1;strokeWidth=2;shape=manualInput;whiteSpace=wrap;rounded=1;size=26;arcSize=11;" vertex="1" parent="1">
+          <mxGeometry x="320" y="-90" width="100" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-76" target="xSXBDfNWIm1OBwbBtW4V-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-79" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-77">
+          <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-80" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-76" target="P3gHFLwZ7kK-pXSkKa9D-78">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-81" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="P3gHFLwZ7kK-pXSkKa9D-80">
+          <mxGeometry x="-0.12" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-76" value="Does cancel amount equals wager amount?" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="140" y="190" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-82" style="edgeStyle=orthogonalEdgeStyle;rounded=0;jumpStyle=line;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="P3gHFLwZ7kK-pXSkKa9D-78" target="P3gHFLwZ7kK-pXSkKa9D-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="P3gHFLwZ7kK-pXSkKa9D-78" value="Subtract order to fill cancel amount from wager amount and &amp;nbsp;Return cancel amount from bet escrow amount to bettor." style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="10" y="250" width="100" height="130" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2022  Umbrella Insurance Inc.
+  -->
+
+<browserconfig>
+  <msapplication>
+    <tile>
+      <TileColor>#da532c</TileColor>
+      <square150x150logo src="img/mstile-150x150.png"/>
+    </tile>
+  </msapplication>
+</browserconfig>

@@ -1,0 +1,483 @@
+body {
+    background-color: white;
+    width: 100%;
+    display: block;
+    margin-top: 8px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.column2 {
+    margin-left:0%;
+    padding: 0px;
+    margin-top: 0px;
+    top:25%;
+    position: absolute;
+    height: 75%;
+    width: 100%;
+    text-align: center;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 2s;
+}
+
+.scrollDiv {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    scrollbar-color: red blue;
+    scrollbar-width: none;
+}
+
+.hamburger {
+    position: fixed;
+    top:0px;
+    left:0px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: black;
+    border-radius: 30px;
+    z-index: 2;
+    font-size: 30px;
+    border-color: black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin: 1px;
+    padding: 3px;
+}
+
+-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+-webkit-keyframes fadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.flexInner {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+label, address {
+	border: none;
+	padding-top: 12px;
+    margin-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+	text-decoration: none;
+	color: black;
+	font-size: 30px;
+	font-weight: normal;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+	width: 100%;
+    vertical-align: middle;
+}
+
+select:invalid {
+    background-color: red;
+}
+
+input, select {
+    text-align-last: center;
+	border: none;
+	text-decoration: none;
+	color: black;
+	font-size: 30px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+	font-weight: normal;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+	background-color: grey;
+	width: 80%;
+	margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    vertical-align: middle;
+	justify-content: center;
+	align-items: center;
+	min-width:70%;
+    border-radius: 5px;
+}
+
+input:invalid {
+	color: red;
+}
+input:disabled {
+	background-color: gray;
+}
+
+::placeholder{
+	color: red;
+}
+
+input:focus {
+	caret-color: black;
+	background-color: lightgrey;
+}
+
+select:has(option[value=""]:checked)  { 
+    background-color: red; 
+}
+
+option:checked{
+    box-shadow: 0 0 10px 100px green inset;
+}
+
+
+option[selected=false] {
+    display: none;
+}
+h2, h1 {
+	padding: 12px;
+	color: black;
+	text-decoration: none;
+	font-size: 40px;
+	text-align: center;
+}
+
+button {
+	padding: 12px;
+	text-decoration: none;
+	color: black;
+	font-size: 30px;
+	font-weight: normal;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+	width: 40%;
+	background-color: white;
+    margin-left: 30%;
+    margin-right: 30%;
+	margin-top: 20px;
+    margin-bottom: 20px;
+	border-radius: 10px;
+	border-style: groove;
+	border-width: 2px;
+
+}
+
+button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+button:disabled {
+    color: darkgray;
+}
+
+button:disabled:hover {
+    color: darkgray;
+}
+
+
+
+input[type="radio"] {
+	align-self: center;
+    text-align: center;
+    color: white;
+    border: none;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: normal;
+	font-family: "Times New Roman", Times, serif;
+	justify-content: center;
+	align-items: center;
+    height: 30px;
+    -webkit-appearance: radio;
+    appearance: radio;
+    width:80%;
+    min-width: 70%;
+    display:inline
+}
+
+input[type="radio"]:invalid::after  {
+	content: "*";
+	color: red;
+    padding: 0;
+    margin: 0;
+	/*animation: 2s linear infinite blinker;*/
+}
+
+@keyframes blinker {
+	from { height: 30px; }
+	to { height: 60px; }
+}
+
+p {
+	border: none;
+	padding: 12px;
+	color: black;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: normal;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+	/* If you want the text to be centered */
+}
+
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+    height: 100%;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 5; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: white; /* Black fallback color */
+    background-color: rgba(255,255,255, 0.9); /* Black w/opacity */
+    overflow: hidden; /* Disable horizontal scroll */
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 2s;
+}
+
+.errorBox {
+    position: relative;
+    border: 1px solid black;
+    top: 20%;
+    vertical-align: middle;
+    width: 60%;
+    height: 60%;
+    
+    text-align: center;
+    justify-content: center;
+    left: 20%;
+    background-color: grey;
+    overflow: hidden; /* Disable horizontal scroll */
+}
+
+.warningBox {
+    position: relative;
+    border: 1px solid black;
+    top: 20%;
+    vertical-align: middle;
+    width: 60%;
+    height: 60%;
+    
+    text-align: center;
+    justify-content: center;
+    left: 20%;
+    background-color: grey;
+    overflow: hidden; /* Disable horizontal scroll */
+}
+
+.userAgreementBox {
+    position: relative;
+    border: 1px solid black;
+    top: 0%;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    text-align: center;
+    justify-content: center;
+    left: 0%;
+    background-color: grey;
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+.header {
+	display: flex;
+	justify-content: space-around;
+	align-items: stretch;
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+
+.headerButton {
+    border: none;
+    padding: 12px;
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: normal;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    background-color: white;
+    align-items: flex-start;
+}
+
+.titleImage {
+    background-color: white;
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+}
+
+.title {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: black;
+    width: 100%;
+    height: 25% ;
+    background-color: white;
+    
+    border-bottom: 2px solid black;
+
+    padding:0px;
+    margin:0px;
+
+}
+
+.titleImage:hover {
+    cursor: pointer;
+}
+
+.headerButton:hover {
+    background-color: grey;
+    cursor: pointer;
+}
+  
+ul.show {
+    visibility: visible;
+    opacity: 1;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 40%;
+    background-color: white;
+    position: fixed;
+    height: 80%;
+    top:0%;
+    position: fixed;
+    z-index: 1;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    padding-top: 50px;
+    transition: width 250ms ease-in;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+ul.show::-webkit-scrollbar {
+    display: none;
+}
+
+ul {
+    opacity: 100;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 0%;
+    background-color: white;
+    position: fixed;
+    height: 100%;
+    top:0%;
+    position: fixed;
+    z-index: 1;
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+    padding-top: 50px;
+    transition: width 250ms ease-in;
+    overflow: hidden;
+}
+  
+li button {
+
+    display: block;
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.liActive {
+    background-color: #04AA6D !important;
+    color: white;
+}
+
+.loading {
+    position:fixed; 
+    z-index:3;
+    top:25%; 
+    left:25%; 
+    width:50%;
+    height:50%; 
+    background:rgba(0,0,0,0.5);
+    animation: spin2 5s infinite;
+    animation-timing-function: linear;
+}
+
+.loadingBackground {
+    position:fixed; 
+    z-index:3;
+    top:0%; 
+    left:0%; 
+    width:100%;
+    height:100%; 
+    background:rgba(0,0,0,0.5);
+}
+  
+@keyframes spin {
+    0% {transform: rotate(0deg);}
+    25% {transform: rotate(90deg);}
+    50% {transform: rotate(180deg);}
+    75% {transform: rotate(270deg);}
+    100% {transform: rotate(360deg);}
+}
+
+@keyframes spin2 {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+.qrCodeImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+textarea {
+	border: none;
+    margin-left: 10%;
+	width: 80%;
+    height: 200px;
+    color: black;
+	text-decoration: none;
+	font-size: 30px;
+	font-weight: normal;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+}
+
+.outlined {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}

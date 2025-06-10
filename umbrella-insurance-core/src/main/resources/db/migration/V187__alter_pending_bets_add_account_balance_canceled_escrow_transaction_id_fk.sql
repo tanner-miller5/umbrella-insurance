@@ -1,0 +1,4 @@
+ALTER TABLE public.pending_bets ADD CONSTRAINT
+pending_bets_account_balance_canceled_escrow_transaction_id_fk FOREIGN KEY
+(account_balance_canceled_escrow_transaction_id) REFERENCES public.account_balance_transactions(account_balance_transaction_id)
+ON DELETE SET NULL ON UPDATE SET NULL;

@@ -1,0 +1,4 @@
+Contact: mailto:security@umbrella-insurance.com
+Expires: 2030-05-04T17:00:00.000Z
+Preferred-Languages: en
+Canonical: https://www.umbrella-insurance.com/misc/security.txt

@@ -1,0 +1,5 @@
+{
+  "contentType": "text/html",
+  "emailSubject": "Umbrella Insurance Email Verification",
+  "emailBody": "<!DOCTYPE html><html><head></head><body><p>Verification code VERIFICATION_CODE</p></body></html>"
+}

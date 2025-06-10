@@ -1,0 +1,53 @@
+create ad record
+curl --request POST \
+  --url http://localhost:8080/rest/ad_records/v1/TEST \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.1' \
+  --data '{
+	"adName": "tanner_test8",
+	"adData": "tester_data3",
+	"createdDateTime": "2024-04-13T01:45:09.999Z"
+}'
+
+read ad record by ad name
+curl --request GET \
+  --url http://localhost:8080/rest/ad_records/v1/TEST/ad_name/tanner_test99 \
+  --header 'User-Agent: insomnia/8.6.1'
+
+read ad record by ad id
+curl --request GET \
+  --url http://localhost:8080/rest/ad_records/v1/TEST/1 \
+  --header 'User-Agent: insomnia/8.6.1'
+
+update ad record by ad id
+curl --request PUT \
+  --url http://localhost:8080/rest/ad_records/v1/TEST/10 \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.1' \
+  --data '{
+	"adName": "tanner_test99",
+	"adData": "tester_data3",
+	"createdDateTime": "2024-04-13T01:45:09.999Z"
+}'
+
+update ad record by ad name
+curl --request PUT \
+  --url http://localhost:8080/rest/ad_records/v1/TEST/ad_name/tanner_test99 \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.1' \
+  --data '{
+	"adName": "tanner_test99",
+	"adData": "tester_data3",
+	"createdDateTime": "2024-04-13T01:45:09.999Z"
+}'
+
+delete ad record by ad id
+curl --request DELETE \
+  --url http://localhost:8080/rest/ad_records/v1/TEST/10 \
+  --header 'User-Agent: insomnia/8.6.1'
+
+delete ad record by ad name
+curl --request DELETE \
+  --url http://localhost:8080/rest/ad_records/v1/TEST/ad_name/tanner_test99 \
+  --header 'User-Agent: insomnia/8.6.1'
+

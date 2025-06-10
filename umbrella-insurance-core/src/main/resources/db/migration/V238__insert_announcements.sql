@@ -1,0 +1,2 @@
+INSERT INTO public.announcements (created_date_time,message,announcement_name,session_id) VALUES ('2024-10-25 20:10:21.267569','The Umbrella Insurance insurance platform is still under development.','UnderDevelopment',NULL);
+INSERT INTO public.announcements (created_date_time,message,announcement_name,session_id) VALUES ('2024-10-25 20:10:21.285472','The website is still under development. You can create an account but consider it a beta account until another announcement.','BetaAccount',NULL);
