@@ -89,7 +89,7 @@ public class PerilRestEndpoints {
                     perilList.add(peril.get());
                 }
             } else {
-                throw new NotImplementedException("This read query is not implemented peril ");
+                perilList = perilService.getPerils();
             }
         } catch(NotFoundException e) {
             logger.error("Logging Request Number: {}, message: {}", currentRequestNumber, e.getMessage());

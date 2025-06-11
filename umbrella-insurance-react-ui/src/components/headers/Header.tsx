@@ -67,6 +67,7 @@ export default function Header() {
     let cartClassName = defaultButtonStyle;
     let checkoutClassName = defaultButtonStyle;
     let aboutUsClassName = defaultButtonStyle;
+    let perilsClassName = defaultButtonStyle;
     if (currentPage === '/faq') {
         faqClassName = activeButtonStyle;
     } else if (currentPage === '/announcements') {
@@ -121,6 +122,8 @@ export default function Header() {
         checkoutClassName = activeButtonStyle;
     } else if (currentPage === '/aboutUs') {
         aboutUsClassName = activeButtonStyle;
+    } else if (currentPage === '/perils') {
+        perilsClassName = activeButtonStyle;
     }
     const env = useSelector((state:RootState) => {
         return state.environment.env;
@@ -375,6 +378,10 @@ export default function Header() {
         closeNavMenu();
         navigate("/aboutUs");
     }
+    function onClickPerils() {
+        closeNavMenu();
+        navigate("/perils");
+    }
     let endDateTime: string | undefined = useSelector((state: RootState)=>{
         return state.user.endDateTime;
     });
@@ -476,6 +483,7 @@ export default function Header() {
             {didUserLoad && <li onClick={onClickCheckout} className={checkoutClassName}>Checkout</li>}
             {didUserLoad && <li onClick={onClickCart} className={cartClassName}>Cart</li>}
             <li onClick={onClickAboutUs} className={aboutUsClassName}>About Us</li>
+            <li onClick={onClickPerils} className={perilsClassName}>Types of Perils</li>
         </ul>
     </>)
 };

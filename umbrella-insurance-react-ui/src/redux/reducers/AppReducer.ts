@@ -4,6 +4,7 @@ import { Faq } from '../../models/faqs/v1/Faq';
 import { Unit } from '../../models/units/v1/Unit';
 import { Review } from '../../models/reviews/v1/Review';
 import { Item } from '../../models/items/v1/Item';
+import { Peril } from '../../models/perils/v1/Peril';
 
 
 export class AppState {
@@ -22,6 +23,7 @@ export class AppState {
   backendAppVersion?: string;
   frontendAppVersion?: string;
   items: Item[];
+  perils: Peril[];
   constructor() {
     this.currentPage = "/";
     this.announcements = [];
@@ -33,6 +35,7 @@ export class AppState {
     this.isPrivacyPolicyOpen = false;
     this.isTermsAndConditionsOpen = false;
     this.items = [];
+    this.perils = [];
   }
 }
 
@@ -129,7 +132,13 @@ export const appSlice = createSlice({
         ...state,
         items: action.payload
       }
-    }
+    },
+    updatePerils: (state, action) => {
+      return {
+        ...state,
+        perils: action.payload
+      }
+    },
   }
 })
 
@@ -138,7 +147,8 @@ export const { updateCurrentPage, updateAnnouncements, updateFaqs,
   updateIsHamburgerMenuOpen, updateIsErrorOpen, updateErrorMessage,
   updateUnits, updateReviews, updateIsWarningOpen, updateWarningMessage,
   updateIsPrivacyPolicyOpen, updateIsTermsAndConditionsOpen,
-  updateFrontendAppVersion, updateBackendAppVersion, updateItems
+  updateFrontendAppVersion, updateBackendAppVersion, updateItems,
+  updatePerils
  } = appSlice.actions
 
 export default appSlice.reducer

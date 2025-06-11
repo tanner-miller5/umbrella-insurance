@@ -52,6 +52,36 @@ export async function callReadPerilRestEndpointsByPerilId(
     return perils;
 }
 
+export async function callReadPerilRestEndpoints(
+    env: string, domain: string): Promise<Peril[] | undefined> {
+    let config: AxiosRequestConfig = {
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json',
+        }
+    }
+
+    let url = `${domain}/rest/perils/v1?env=${env}`;
+    let perils: Peril[] | undefined = [];
+    try {
+        let readPerilListResponse: AxiosResponse<Peril[]> = await axios.get(url, config);
+        let perilList = readPerilListResponse.data;
+        for(let i = 0; i < perilList.length; i++) {
+            perils[i] = new Peril(perilList[i]);
+        }
+    } catch(e:any) {
+        let loggingMessage: LoggingMessage = new LoggingMessage();        
+        const url = window.location.href;         
+        loggingMessage.appName = 'umbrella-insurance-frontend';
+        loggingMessage.callingLoggerName = url;        
+        loggingMessage.loggingPayload = `ERROR:${e.message}`;         
+        loggingMessage.logLevel = "ERROR";         
+        callCreateLoggingRestEndpoints(loggingMessage, env, domain);         
+        console.error(loggingMessage.loggingPayload);
+    }
+    return perils;
+}
+
 export async function callReadPerilRestEndpointsByPerilName(
     perilName: string, env: string, domain: string): Promise<Peril[] | undefined> {
     let config: AxiosRequestConfig = {

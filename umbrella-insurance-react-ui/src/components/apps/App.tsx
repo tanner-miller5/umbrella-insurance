@@ -47,6 +47,7 @@ import Checkout from '../checkout/Checkout';
 import Cart from '../cart/Cart';
 import Items from '../items/Items';
 import AboutUs from '../aboutUs/AboutUs';
+import Peril from '../Perils/Peril';
 
 function App() {
 
@@ -126,6 +127,7 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="items" element={<Items />} />
         <Route path="aboutUs" element={<AboutUs />} />
+        <Route path="perils" element={<Peril />} />
         {/* Using path="*"" means "match anything", so this route
               acts like a catch-all for URLs that we don't have explicit
               routes for. */}
