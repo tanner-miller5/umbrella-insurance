@@ -95,7 +95,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomeLayout />}>
-        <Route index element={<GameTable />} />
+        <Route index element={<Peril />} />
         <Route path="placeBet" element={<PlaceBet />} />
         <Route path="createUser" element={<CreateUser />} />
         <Route path="deleteUser" element={<DeleteUser />} />

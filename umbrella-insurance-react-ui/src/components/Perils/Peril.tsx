@@ -39,7 +39,13 @@ export default function Perils(){
     for (let i = 0; i < perils.length; i++) {
         // note: we are adding a key prop here to allow react to uniquely identify each
         // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
-        rows.push(<PerilRow key={i} perilName={perils[i].perilName || ""} />);
+        rows.push(<PerilRow key={i} 
+            perilName={perils[i].perilName || ""} 
+            description={perils[i].description || ""} 
+            scaleName={perils[i].scaleName || ""} 
+            minMagnitude={perils[i].minMagnitude || 0} 
+            maxMagnitude={perils[i].maxMagnitude || 0} 
+            />);
     }
     return (    
             <div className='column2'>

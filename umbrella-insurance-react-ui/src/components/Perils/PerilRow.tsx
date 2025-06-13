@@ -1,10 +1,20 @@
 interface PerilRowProps {
     perilName: string;
+    description?: string;
+    scaleName?: string;
+    minMagnitude?: number;
+    maxMagnitude?: number;
 }
-export default function PerilRow({perilName}:PerilRowProps){
+export default function PerilRow({perilName,
+    description,
+    scaleName,
+    minMagnitude,
+    maxMagnitude
+    }:PerilRowProps){
 
     return (    
-    <div>
-        <p >{(perilName.charAt(0).toUpperCase() + perilName.slice(1)).replaceAll("_"," ")}</p>
-    </div>);
+        <div>
+            <p >{perilName}: {description}<br/>
+            {scaleName}: Min Magnitude = {minMagnitude} - Max Magnitude = {maxMagnitude}</p>
+        </div>);
 }
