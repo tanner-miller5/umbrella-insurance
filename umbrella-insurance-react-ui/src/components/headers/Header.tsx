@@ -68,6 +68,7 @@ export default function Header() {
     let checkoutClassName = defaultButtonStyle;
     let aboutUsClassName = defaultButtonStyle;
     let perilsClassName = defaultButtonStyle;
+    let createPolicyClassName = defaultButtonStyle;
     if (currentPage === '/faq') {
         faqClassName = activeButtonStyle;
     } else if (currentPage === '/announcements') {
@@ -124,6 +125,8 @@ export default function Header() {
         aboutUsClassName = activeButtonStyle;
     } else if (currentPage === '/perils') {
         perilsClassName = activeButtonStyle;
+    } else if (currentPage === '/insurerOrInsured') {
+        createPolicyClassName = activeButtonStyle;
     }
     const env = useSelector((state:RootState) => {
         return state.environment.env;
@@ -382,6 +385,10 @@ export default function Header() {
         closeNavMenu();
         navigate("/perils");
     }
+    function onClickCreatePolicy() {
+        closeNavMenu();
+        navigate("/insurerOrInsured");
+    }
     let endDateTime: string | undefined = useSelector((state: RootState)=>{
         return state.user.endDateTime;
     });
@@ -484,6 +491,7 @@ export default function Header() {
             {didUserLoad && <li onClick={onClickCart} className={cartClassName}>Cart</li>}
             <li onClick={onClickAboutUs} className={aboutUsClassName}>About Us</li>
             <li onClick={onClickPerils} className={perilsClassName}>Types of Perils</li>
+            <li onClick={onClickCreatePolicy} className={createPolicyClassName}>Create Policy</li>
         </ul>
     </>)
 };

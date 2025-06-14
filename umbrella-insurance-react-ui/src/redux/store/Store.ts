@@ -8,9 +8,11 @@ import { statSlice, StatState } from "../reducers/StatReducer";
 import { announcementSlice, AnnouncementState } from "../reducers/AnnouncementReducer";
 import { faqSlice, FaqState } from "../reducers/FaqReducer";
 import { reviewSlice, ReviewState } from "../reducers/ReviewsReducer";
+import { policySlice, PolicyState } from "../reducers/PolicyReducer";
 
 export const rootReducer = combineSlices(counterSlice, userSlice, loadingSlice, 
-    environmentSlice, appSlice, statSlice, announcementSlice, faqSlice, reviewSlice)
+    environmentSlice, appSlice, statSlice, announcementSlice, faqSlice, reviewSlice,
+    policySlice);
 
 export class RootState {
     counter: CounterState;
@@ -22,6 +24,7 @@ export class RootState {
     announcement: AnnouncementState;
     faq: FaqState;
     review: ReviewState;
+    policy: PolicyState;
     constructor() {
         this.counter = new CounterState();
         this.user = new UserState();
@@ -32,6 +35,7 @@ export class RootState {
         this.announcement = new AnnouncementState();
         this.faq = new FaqState();
         this.review = new ReviewState();
+        this.policy = new PolicyState();
     }
 }
 
