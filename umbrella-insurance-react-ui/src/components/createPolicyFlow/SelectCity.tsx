@@ -5,7 +5,7 @@ import { RootState } from "../../redux/store/Store";
 import { updatePolicyFor } from "../../redux/reducers/PolicyReducer";
 import { useNavigate } from "react-router-dom";
 
-export default function InsurerOrInsured(){
+export default function SelectState(){
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -17,28 +17,22 @@ export default function InsurerOrInsured(){
     });
     useEffect(
         function() {
-            dispatch(updateCurrentPage("/insurerOrInsured"));
+            dispatch(updateCurrentPage("/selectCity"));
         }, []
     );
-    function onClickInsurer() {
-        dispatch(updatePolicyFor("Insurer"));
-        navigate("/selectPeril");
-    }
-    function onClickInsured() {
-        dispatch(updatePolicyFor("Insured"));
-        navigate("/selectPeril");
+    function onClickSelectState() {
+        navigate("/");
     }
     function onClickBack() {
-        navigate("/createPolicy");
+        navigate("/selectState");
     }
 
 
     return (    
-            <div className='column2'>
-                <h1>Are you looking to insure or be insured</h1>
-                <button onClick={onClickInsurer}>Insurer</button>
-                <button onClick={onClickInsured}>Insured</button>
-                <button onClick={onClickBack}>Back</button>
-            </div> 
+        <div className='column2'>
+            <h1>Select City</h1>
+            <button onClick={onClickSelectState}>Start</button>
+            <button onClick={onClickBack}>Back</button>
+        </div> 
     );
 };

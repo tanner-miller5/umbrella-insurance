@@ -47,8 +47,12 @@ import Checkout from '../checkout/Checkout';
 import Cart from '../cart/Cart';
 import Items from '../items/Items';
 import AboutUs from '../aboutUs/AboutUs';
-import Peril from '../perils/Peril';
 import InsurerOrInsured from '../createPolicyFlow/InsurerOrInsured';
+import CreatePolicy from '../createPolicyFlow/CreatePolicyStart';
+import PerilTypes from '../perils/PerilTypes';
+import SelectPeril from '../perils/SelectPeril';
+import SelectState from '../createPolicyFlow/SelectState';
+import SelectCity from '../createPolicyFlow/SelectCity';
 
 function App() {
 
@@ -96,7 +100,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomeLayout />}>
-        <Route index element={<Peril />} />
+        <Route index element={<CreatePolicy />} />
         <Route path="placeBet" element={<PlaceBet />} />
         <Route path="createUser" element={<CreateUser />} />
         <Route path="deleteUser" element={<DeleteUser />} />
@@ -128,8 +132,12 @@ function App() {
         <Route path="cart" element={<Cart />} />
         <Route path="items" element={<Items />} />
         <Route path="aboutUs" element={<AboutUs />} />
-        <Route path="perils" element={<Peril />} />
+        <Route path="perilTypes" element={<PerilTypes />} />
+        <Route path="selectPeril" element={<SelectPeril />} />
         <Route path="insurerOrInsured" element={<InsurerOrInsured />} />
+        <Route path="createPolicy" element={<CreatePolicy />} />
+        <Route path="selectState" element={<SelectState />} />
+        <Route path="selectCity" element={<SelectCity />} />
         {/* Using path="*"" means "match anything", so this route
               acts like a catch-all for URLs that we don't have explicit
               routes for. */}

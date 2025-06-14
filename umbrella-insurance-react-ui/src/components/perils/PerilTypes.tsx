@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/Store';
 import { toObject } from '../../utils/Parser';
 import { callReadPerilRestEndpoints } from '../../endpoints/rest/perils/v1/PerilRestEndpoints';
-import PerilRow from './PerilRow';
+import SelectPerilRow from './SelectPerilRow';
+import PerilTypeRow from './PerilTypeRow';
 
-export default function Perils(){
+export default function PerilTypes(){
     const dispatch = useDispatch();
 
     const domain = useSelector((state: RootState) => {
@@ -20,7 +21,7 @@ export default function Perils(){
     });
     useEffect(
         function() {
-            dispatch(updateCurrentPage("/perils"));
+            dispatch(updateCurrentPage("/perilTypes"));
         }, []
     );
 
@@ -39,7 +40,7 @@ export default function Perils(){
     for (let i = 0; i < perils.length; i++) {
         // note: we are adding a key prop here to allow react to uniquely identify each
         // element in this array. see: https://reactjs.org/docs/lists-and-keys.html
-        rows.push(<PerilRow key={i} 
+        rows.push(<PerilTypeRow key={i} 
             perilName={perils[i].perilName || ""} 
             description={perils[i].description || ""} 
             scaleName={perils[i].scaleName || ""} 

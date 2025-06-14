@@ -1,16 +1,16 @@
-interface PerilRowProps {
+interface PerilTypeRowProps {
     perilName: string;
     description?: string;
     scaleName?: string;
     minMagnitude?: number;
     maxMagnitude?: number;
 }
-export default function PerilRow({perilName,
+export default function PerilTypeRow({perilName,
     description,
     scaleName,
     minMagnitude,
     maxMagnitude
-    }:PerilRowProps){
+    }:PerilTypeRowProps){
 
     return (    
         <div>
