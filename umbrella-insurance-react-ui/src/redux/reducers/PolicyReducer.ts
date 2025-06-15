@@ -4,6 +4,7 @@ export class PolicyState {
   policyFor?: string;
   selectedPeril?: string;
   selectedState?: string;
+  selectedCity?: string;
   constructor() {
   }
 }
@@ -29,13 +30,19 @@ export const policySlice = createSlice({
         ...state,
         selectedState: action.payload
       }
+    },
+    updateSelectedCity: (state, action) => {
+      return {
+        ...state,
+        selectedCity: action.payload
+      }
     }
   }
 })
 
 // Action creators are generated for each case reducer function
 export const { updatePolicyFor, updateSelectedPeril,
-    updateSelectedState
+    updateSelectedState, updateSelectedCity
  } = policySlice.actions
 
 export default policySlice.reducer

@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCurrentPage } from "../../redux/reducers/AppReducer";
+import { updateCurrentPage, updateErrorMessage, updateIsErrorOpen } from "../../redux/reducers/AppReducer";
 import { RootState } from "../../redux/store/Store";
-import { updatePolicyFor } from "../../redux/reducers/PolicyReducer";
+import { updatePolicyFor, updateSelectedCity } from "../../redux/reducers/PolicyReducer";
 import { useNavigate } from "react-router-dom";
+import { callReadLocationRestEndpointsByStateName } from "../../endpoints/rest/geographies/locations/v1/LocationRestEndpoints";
+import { updateCities } from "../../redux/reducers/GeographyReducer";
+import { toObject } from "../../utils/Parser";
 
 export default function SelectState(){
     const navigate = useNavigate();
@@ -15,24 +18,65 @@ export default function SelectState(){
     const env = useSelector((state: RootState) => {
         return state.environment.env;
     });
+    const cities = useSelector((state: RootState) => {
+        return state.geography.cities;
+    });
+    const selectedState = useSelector((state: RootState) => {
+        return state.policy.selectedState;
+    }) || "";
+    const selectedCity = useSelector((state: RootState) => {
+        return state.policy.selectedCity;
+    }) || "";
     useEffect(
         function() {
             dispatch(updateCurrentPage("/selectCity"));
         }, []
     );
-    function onClickSelectState() {
+    function onClickSelectCity(event: any) {
+        if(selectedCity === "") {
+            dispatch(updateIsErrorOpen(true));
+            dispatch(updateErrorMessage("Select a city"));
+            return;
+        }
         navigate("/");
     }
     function onClickBack() {
         navigate("/selectState");
     }
+    useEffect(
+        function() {
+            async function getCitiesByState(stateName: string) {
+                const cities = await callReadLocationRestEndpointsByStateName(stateName, env, domain);
+                if(cities) {
+                    dispatch(updateCities(toObject(cities)));
+                }
+            };
+            getCitiesByState(selectedState);
+        }, []
+    )
 
 
     return (    
         <div className='column2'>
-            <h1>Select City</h1>
-            <button onClick={onClickSelectState}>Start</button>
-            <button onClick={onClickBack}>Back</button>
+            <form className="flexContainer" onSubmit={(e)=>{
+                e.preventDefault();
+                onClickSelectCity(e);
+            }}>
+                <h1>Select City</h1>
+                <select defaultValue={selectedState}
+                    onChange={(event)=>{dispatch(updateSelectedCity(event.target.value))}}>
+                    <option disabled value="">-</option>
+                    {cities?.map((option, index) => (
+                    <option key={index} value={option.city?.cityName}>
+                    {option.city?.cityName}
+                    </option>
+                    ))}
+                </select>
+                <div className='flexInner'>
+                    <button name="action" type="submit" >Submit</button>
+                </div>
+                <button onClick={onClickBack}>Back</button>
+            </form>
         </div> 
     );
 };

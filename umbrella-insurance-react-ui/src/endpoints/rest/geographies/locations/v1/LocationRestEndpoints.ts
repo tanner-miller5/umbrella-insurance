@@ -81,6 +81,36 @@ export async function callReadLocationRestEndpointsByLocationName(
     return locations;
 }
 
+export async function callReadLocationRestEndpointsByStateName(
+    stateName: string, env: string, domain: string): Promise<Location[] | undefined> {
+    let config: AxiosRequestConfig = {
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json',
+        }
+    }
+
+    let url = `${domain}/rest/locations/v1?env=${env}&stateName=${stateName}`;
+    let locations: Location[] = [];
+    try {
+        let readLocationListResponse: AxiosResponse<Location[]> = await axios.get(url, config);
+        let locationList = readLocationListResponse.data;
+        for(let i = 0; i < locationList.length; i++) {
+            locations[i] = new Location(locationList[i]);
+        } 
+    } catch(e:any) {
+        let loggingMessage: LoggingMessage = new LoggingMessage();         
+        const url = window.location.href;         
+        loggingMessage.appName = 'umbrella-insurance-frontend';
+        loggingMessage.callingLoggerName = url;        
+        loggingMessage.loggingPayload = `ERROR:${e.message}`;         
+        loggingMessage.logLevel = "ERROR";         
+        callCreateLoggingRestEndpoints(loggingMessage, env, domain);         
+        console.error(loggingMessage.loggingPayload);
+    }
+    return locations;
+}
+
 export async function callUpdateLocationRestEndpoints(
     location: Location, env: string, domain: string): Promise<Location[]>  {
     let config: AxiosRequestConfig = {

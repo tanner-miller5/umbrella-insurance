@@ -53,4 +53,9 @@ public class LocationServiceImpl implements LocationService {
     public void deleteByLocationId(Long locationId) {
         locationRepository.deleteById(locationId);
     }
+
+    @Override
+    public List<Location> getLocationsByState(String state) {
+        return locationRepository.getLocationsByState(state);
+    }
 }

@@ -63,6 +63,7 @@ public class LocationRestEndpoints {
             @RequestParam String env,
             @RequestParam(required = false) Long locationId,
             @RequestParam(required = false) String locationName,
+            @RequestParam(required = false) String stateName,
             @RequestAttribute BigInteger currentRequestNumber,
             ServletRequest request) throws Exception {
         Connection connection = null;
@@ -88,6 +89,8 @@ public class LocationRestEndpoints {
                     locationList = new ArrayList<>();
                     locationList.add(location.get());
                 }
+            } else if (stateName != null) {
+                locationList = locationService.getLocationsByState(stateName);
             } else {
                 throw new NotImplementedException("This read query is not implemented location ");
             }

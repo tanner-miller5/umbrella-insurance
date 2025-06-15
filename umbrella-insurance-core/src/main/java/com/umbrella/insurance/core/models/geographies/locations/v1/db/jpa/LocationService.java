@@ -14,4 +14,5 @@ public interface LocationService {
     void deleteByLocationName(String locationName);
     Optional<Location> getLocationByLocationId(Long locationId);
     void deleteByLocationId(Long locationId);
+    List<Location> getLocationsByState(String state);
 }
