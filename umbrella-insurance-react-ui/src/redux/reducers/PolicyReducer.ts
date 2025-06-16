@@ -3,8 +3,13 @@ import { createSlice } from '@reduxjs/toolkit'
 export class PolicyState {
   policyFor?: string;
   selectedPeril?: string;
+  selectedPerilMinMagnitude?: number;
+  selectedPerilMaxMagnitude?: number;
   selectedState?: string;
   selectedCity?: string;
+  startPolicyMonthAndYear?: string;
+  endPolicyMonthAndYear?: string;
+  selectedMagnitude?: number;
   constructor() {
   }
 }
@@ -36,13 +41,46 @@ export const policySlice = createSlice({
         ...state,
         selectedCity: action.payload
       }
-    }
+    },
+    updateStartPolicyMonthAndYear: (state, action) => {
+      return {
+        ...state,
+        startPolicyMonthAndYear: action.payload
+      }
+    },
+    updateEndPolicyMonthAndYear: (state, action) => {
+      return {
+        ...state,
+        endPolicyMonthAndYear: action.payload
+      }
+    },
+    updateSelectedMagnitude: (state, action) => {
+      return {
+        ...state,
+        selectedMagnitude: action.payload
+      }
+    },
+    updateSelectedPerilMinMagnitude: (state, action) => {
+      return {
+        ...state,
+        selectedPerilMinMagnitude: action.payload
+      }
+    },
+    updateSelectedPerilMaxMagnitude: (state, action) => {
+      return {
+        ...state,
+        selectedPerilMaxMagnitude: action.payload
+      }
+    },
   }
 })
 
 // Action creators are generated for each case reducer function
 export const { updatePolicyFor, updateSelectedPeril,
-    updateSelectedState, updateSelectedCity
+    updateSelectedState, updateSelectedCity,
+    updateStartPolicyMonthAndYear, updateEndPolicyMonthAndYear,
+    updateSelectedMagnitude, updateSelectedPerilMinMagnitude,
+    updateSelectedPerilMaxMagnitude
  } = policySlice.actions
 
 export default policySlice.reducer

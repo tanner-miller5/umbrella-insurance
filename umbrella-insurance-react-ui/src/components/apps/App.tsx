@@ -47,12 +47,14 @@ import Checkout from '../checkout/Checkout';
 import Cart from '../cart/Cart';
 import Items from '../items/Items';
 import AboutUs from '../aboutUs/AboutUs';
-import InsurerOrInsured from '../createPolicyFlow/InsurerOrInsured';
+import InsurerOrInsured from '../createPolicyFlow/SelectInsurerOrInsured';
 import CreatePolicy from '../createPolicyFlow/CreatePolicyStart';
 import PerilTypes from '../perils/PerilTypes';
 import SelectPeril from '../perils/SelectPeril';
 import SelectState from '../createPolicyFlow/SelectState';
 import SelectCity from '../createPolicyFlow/SelectCity';
+import SelectPeriodCoverage from '../createPolicyFlow/SelectPeriodCoverage';
+import SelectMagnitude from '../perils/SelectMagnitude';
 
 function App() {
 
@@ -138,6 +140,8 @@ function App() {
         <Route path="createPolicy" element={<CreatePolicy />} />
         <Route path="selectState" element={<SelectState />} />
         <Route path="selectCity" element={<SelectCity />} />
+        <Route path="selectPeriodCoverage" element={<SelectPeriodCoverage />} />
+        <Route path="selectMagnitude" element={<SelectMagnitude />} />
         {/* Using path="*"" means "match anything", so this route
               acts like a catch-all for URLs that we don't have explicit
               routes for. */}

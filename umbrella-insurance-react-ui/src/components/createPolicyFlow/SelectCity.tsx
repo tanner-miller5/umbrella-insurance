@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { callReadLocationRestEndpointsByStateName } from "../../endpoints/rest/geographies/locations/v1/LocationRestEndpoints";
 import { updateCities } from "../../redux/reducers/GeographyReducer";
 import { toObject } from "../../utils/Parser";
+import { updateLoadingState } from "../../redux/reducers/LoadingReducer";
 
 export default function SelectState(){
     const navigate = useNavigate();
@@ -27,6 +28,9 @@ export default function SelectState(){
     const selectedCity = useSelector((state: RootState) => {
         return state.policy.selectedCity;
     }) || "";
+    let isLoadingOpen: boolean = useSelector((state: RootState)=>{
+        return state.loading.value;
+    });
     useEffect(
         function() {
             dispatch(updateCurrentPage("/selectCity"));
@@ -38,7 +42,7 @@ export default function SelectState(){
             dispatch(updateErrorMessage("Select a city"));
             return;
         }
-        navigate("/");
+        navigate("/selectPeriodCoverage");
     }
     function onClickBack() {
         navigate("/selectState");
@@ -46,15 +50,23 @@ export default function SelectState(){
     useEffect(
         function() {
             async function getCitiesByState(stateName: string) {
+                dispatch(updateLoadingState(true));
                 const cities = await callReadLocationRestEndpointsByStateName(stateName, env, domain);
                 if(cities) {
                     dispatch(updateCities(toObject(cities)));
                 }
+                dispatch(updateLoadingState(false));
             };
             getCitiesByState(selectedState);
         }, []
     )
-
+    if(isLoadingOpen) {
+        return (
+            <div className="loadingBackground">
+                <img src="logo-03.png" className="loading"></img>
+            </div>
+        );
+    }
 
     return (    
         <div className='column2'>
@@ -63,7 +75,7 @@ export default function SelectState(){
                 onClickSelectCity(e);
             }}>
                 <h1>Select City</h1>
-                <select defaultValue={selectedState}
+                <select defaultValue={selectedCity}
                     onChange={(event)=>{dispatch(updateSelectedCity(event.target.value))}}>
                     <option disabled value="">-</option>
                     {cities?.map((option, index) => (

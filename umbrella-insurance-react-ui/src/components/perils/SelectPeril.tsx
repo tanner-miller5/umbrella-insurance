@@ -6,6 +6,7 @@ import { toObject } from '../../utils/Parser';
 import { callReadPerilRestEndpoints } from '../../endpoints/rest/perils/v1/PerilRestEndpoints';
 import SelectPerilRow from './SelectPerilRow';
 import { useNavigate } from 'react-router-dom';
+import { updateLoadingState } from '../../redux/reducers/LoadingReducer';
 
 export default function SelectPeril(){
     const navigate = useNavigate();
@@ -20,6 +21,9 @@ export default function SelectPeril(){
     const perils = useSelector((state: RootState) => {
         return state.app.perils;
     });
+    let isLoadingOpen: boolean = useSelector((state: RootState)=>{
+        return state.loading.value;
+    });
     useEffect(
         function() {
             dispatch(updateCurrentPage("/selectPeril"));
@@ -29,10 +33,12 @@ export default function SelectPeril(){
     useEffect(
         function() {
             async function getPerils() {
+                dispatch(updateLoadingState(true));
                 const perils = await callReadPerilRestEndpoints(env, domain);
                 if(perils) {
                     dispatch(updatePerils(toObject(perils)));
                 }
+                dispatch(updateLoadingState(false));
             };
             getPerils();
         }, []
@@ -52,11 +58,18 @@ export default function SelectPeril(){
     function onClickBack() {
         navigate("/insurerOrInsured");
     }
+    if(isLoadingOpen) {
+        return (
+            <div className="loadingBackground">
+                <img src="logo-03.png" className="loading"></img>
+            </div>
+        );
+    }
     return (    
-            <div className='column2'>
-                <h1>Select Peril Type</h1>
-                {rows}
-                <button onClick={onClickBack}>Back</button>
-            </div> 
+        <div className='column2'>
+            <h1>Select Peril Type</h1>
+            {rows}
+            <button onClick={onClickBack}>Back</button>
+        </div> 
     );
 };

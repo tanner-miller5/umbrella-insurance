@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { callReadStateRestEndpoints } from "../../endpoints/rest/geographies/states/v1/StateRestEndpoints";
 import { updateStates } from "../../redux/reducers/GeographyReducer";
 import { toObject } from "../../utils/Parser";
+import { updateLoadingState } from "../../redux/reducers/LoadingReducer";
 
 export default function SelectState(){
     const navigate = useNavigate();
@@ -24,6 +25,9 @@ export default function SelectState(){
     const selectedState = useSelector((state: RootState) => {
         return state.policy.selectedState;
     }) || "";
+    let isLoadingOpen: boolean = useSelector((state: RootState)=>{
+        return state.loading.value;
+    });
     useEffect(
         function() {
             dispatch(updateCurrentPage("/selectState"));
@@ -38,20 +42,28 @@ export default function SelectState(){
         navigate("/selectCity");
     }
     function onClickBack() {
-        navigate("/selectPeril");
+        navigate("/selectMagnitude");
     }
     useEffect(
         function() {
             async function getStates() {
+                dispatch(updateLoadingState(true));
                 const states = await callReadStateRestEndpoints(env, domain);
                 if(states) {
                     dispatch(updateStates(toObject(states)));
                 }
+                dispatch(updateLoadingState(false));
             };
             getStates();
         }, []
     )
-
+    if(isLoadingOpen) {
+        return (
+            <div className="loadingBackground">
+                <img src="logo-03.png" className="loading"></img>
+            </div>
+        );
+    }
     return (    
         <div className='column2'>
             <form className="flexContainer" onSubmit={(e)=>{

@@ -426,7 +426,7 @@ li button {
     left:25%; 
     width:50%;
     height:50%; 
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.05);
     animation: spin2 5s infinite;
     animation-timing-function: linear;
 }
