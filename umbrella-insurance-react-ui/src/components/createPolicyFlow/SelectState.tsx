@@ -2,10 +2,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentPage, updateErrorMessage, updateIsErrorOpen } from "../../redux/reducers/AppReducer";
 import { RootState } from "../../redux/store/Store";
-import { updatePolicyFor, updateSelectedState } from "../../redux/reducers/PolicyReducer";
+import { updatePolicyFor, updateSelectedCity, updateSelectedState } from "../../redux/reducers/PolicyReducer";
 import { useNavigate } from "react-router-dom";
 import { callReadStateRestEndpoints } from "../../endpoints/rest/geographies/states/v1/StateRestEndpoints";
-import { updateStates } from "../../redux/reducers/GeographyReducer";
+import { updateCities, updateStates } from "../../redux/reducers/GeographyReducer";
 import { toObject } from "../../utils/Parser";
 import { updateLoadingState } from "../../redux/reducers/LoadingReducer";
 
@@ -25,6 +25,9 @@ export default function SelectState(){
     const selectedState = useSelector((state: RootState) => {
         return state.policy.selectedState;
     }) || "";
+    const cities = useSelector((state: RootState) => {
+        return state.geography.cities;
+    });
     let isLoadingOpen: boolean = useSelector((state: RootState)=>{
         return state.loading.value;
     });
@@ -38,6 +41,14 @@ export default function SelectState(){
             dispatch(updateIsErrorOpen(true));
             dispatch(updateErrorMessage("Select a state"));
             return;
+        }
+        if(cities) {
+            if(cities.length > 0) {
+                if(cities[0].state?.stateName !== selectedState) {
+                    dispatch(updateCities(null));
+                    dispatch(updateSelectedCity(null));
+                }
+            }
         }
         navigate("/selectCity");
     }
