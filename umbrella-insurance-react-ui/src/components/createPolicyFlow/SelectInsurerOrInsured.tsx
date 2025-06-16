@@ -15,6 +15,11 @@ export default function SelectInsurerOrInsured(){
     const env = useSelector((state: RootState) => {
         return state.environment.env;
     });
+    const policyFor = useSelector((state: RootState) => {
+        return state.policy.policyFor;
+    });
+    const insuredClassName = policyFor === "Insured" ? "liActive" : "";
+    const insurerClassName = policyFor === "Insurer" ? "liActive" : "";
     useEffect(
         function() {
             dispatch(updateCurrentPage("/insurerOrInsured"));
@@ -36,8 +41,8 @@ export default function SelectInsurerOrInsured(){
     return (    
             <div className='column2'>
                 <h1>Are you looking to insure or be insured?</h1>
-                <button onClick={onClickInsurer}>Insurer</button>
-                <button onClick={onClickInsured}>Insured</button>
+                <button className={insurerClassName} onClick={onClickInsurer}>Insurer</button>
+                <button className={insuredClassName} onClick={onClickInsured}>Insured</button>
                 <button onClick={onClickBack}>Back</button>
             </div> 
     );

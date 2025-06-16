@@ -21,7 +21,7 @@ export default function CreatePolicy(){
         }, []
     );
     function onClickCreatePolicy() {
-        navigate("/insurerOrInsured");
+        navigate("/selectInsurerOrInsured");
     }
 
 

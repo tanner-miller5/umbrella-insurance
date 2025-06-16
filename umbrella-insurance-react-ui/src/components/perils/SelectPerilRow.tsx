@@ -1,6 +1,7 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateSelectedPeril, updateSelectedPerilMaxMagnitude, updateSelectedPerilMinMagnitude } from "../../redux/reducers/PolicyReducer";
+import { RootState } from "../../redux/store/Store";
 
 interface SelectPerilRowProps {
     perilName: string;
@@ -18,12 +19,17 @@ export default function SelectPerilRow({perilName,
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const selectedPeril = useSelector((state: RootState) => {
+        return state.policy.selectedPeril;
+    });
+
     function onClickPeril(event: any) {
         dispatch(updateSelectedPeril(perilName));
         dispatch(updateSelectedPerilMinMagnitude(minMagnitude));
         dispatch(updateSelectedPerilMaxMagnitude(maxMagnitude));
         navigate("/selectMagnitude");
     }
+    const perilClassName = selectedPeril === perilName ? 'liActive' : "";
 
     return (    
         <div>
@@ -31,7 +37,7 @@ export default function SelectPerilRow({perilName,
                 e.preventDefault();
                 onClickPeril(e);
             }}>
-                <button name="action" type="submit">{perilName}: {description}<br/>
+                <button className={perilClassName} name="action" type="submit">{perilName}: {description}<br/>
                 {scaleName}: Min Magnitude = {minMagnitude} - Max Magnitude = {maxMagnitude}</button>
             </form>
         </div>);

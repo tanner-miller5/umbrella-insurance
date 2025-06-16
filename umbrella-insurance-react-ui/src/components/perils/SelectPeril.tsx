@@ -34,9 +34,11 @@ export default function SelectPeril(){
         function() {
             async function getPerils() {
                 dispatch(updateLoadingState(true));
-                const perils = await callReadPerilRestEndpoints(env, domain);
-                if(perils) {
-                    dispatch(updatePerils(toObject(perils)));
+                if(perils.length === 0) {
+                    const perilsResponse = await callReadPerilRestEndpoints(env, domain);
+                    if(perilsResponse) {
+                        dispatch(updatePerils(toObject(perilsResponse)));
+                    }
                 }
                 dispatch(updateLoadingState(false));
             };
@@ -56,7 +58,7 @@ export default function SelectPeril(){
             />);
     }
     function onClickBack() {
-        navigate("/insurerOrInsured");
+        navigate("/selectInsurerOrInsured");
     }
     if(isLoadingOpen) {
         return (

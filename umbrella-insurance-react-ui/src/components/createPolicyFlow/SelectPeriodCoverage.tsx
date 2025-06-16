@@ -40,7 +40,7 @@ export default function SelectPeriodCoverage(){
             dispatch(updateErrorMessage("Select a start coverage period."));
             return;
         }
-        navigate("/");
+        navigate("/selectCoverageAmount");
     }
     function onClickBack() {
         navigate("/selectCity");

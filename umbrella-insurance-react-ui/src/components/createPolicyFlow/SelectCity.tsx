@@ -51,9 +51,11 @@ export default function SelectState(){
         function() {
             async function getCitiesByState(stateName: string) {
                 dispatch(updateLoadingState(true));
-                const cities = await callReadLocationRestEndpointsByStateName(stateName, env, domain);
-                if(cities) {
-                    dispatch(updateCities(toObject(cities)));
+                if(!cities) {
+                    const citiesResponse = await callReadLocationRestEndpointsByStateName(stateName, env, domain);
+                    if(citiesResponse) {
+                        dispatch(updateCities(toObject(citiesResponse)));
+                    }
                 }
                 dispatch(updateLoadingState(false));
             };

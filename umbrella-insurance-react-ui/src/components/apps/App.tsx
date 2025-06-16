@@ -54,7 +54,9 @@ import SelectPeril from '../perils/SelectPeril';
 import SelectState from '../createPolicyFlow/SelectState';
 import SelectCity from '../createPolicyFlow/SelectCity';
 import SelectPeriodCoverage from '../createPolicyFlow/SelectPeriodCoverage';
-import SelectMagnitude from '../perils/SelectMagnitude';
+import SelectMagnitude from '../createPolicyFlow/SelectMagnitude';
+import SelectCoverageAmount from '../createPolicyFlow/SelectCoverageAmount';
+import SelectPremiumAmount from '../createPolicyFlow/SelectPremiumAmount';
 
 function App() {
 
@@ -136,12 +138,14 @@ function App() {
         <Route path="aboutUs" element={<AboutUs />} />
         <Route path="perilTypes" element={<PerilTypes />} />
         <Route path="selectPeril" element={<SelectPeril />} />
-        <Route path="insurerOrInsured" element={<InsurerOrInsured />} />
+        <Route path="selectInsurerOrInsured" element={<InsurerOrInsured />} />
         <Route path="createPolicy" element={<CreatePolicy />} />
         <Route path="selectState" element={<SelectState />} />
         <Route path="selectCity" element={<SelectCity />} />
         <Route path="selectPeriodCoverage" element={<SelectPeriodCoverage />} />
         <Route path="selectMagnitude" element={<SelectMagnitude />} />
+        <Route path="selectCoverageAmount" element={<SelectCoverageAmount />} />
+        <Route path="selectPremiumAmount" element={<SelectPremiumAmount />} />
         {/* Using path="*"" means "match anything", so this route
               acts like a catch-all for URLs that we don't have explicit
               routes for. */}

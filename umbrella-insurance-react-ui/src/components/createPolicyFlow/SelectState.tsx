@@ -48,9 +48,11 @@ export default function SelectState(){
         function() {
             async function getStates() {
                 dispatch(updateLoadingState(true));
-                const states = await callReadStateRestEndpoints(env, domain);
-                if(states) {
-                    dispatch(updateStates(toObject(states)));
+                if(!states) {
+                    const statesResponse = await callReadStateRestEndpoints(env, domain);
+                    if(statesResponse) {
+                        dispatch(updateStates(toObject(statesResponse)));
+                    }
                 }
                 dispatch(updateLoadingState(false));
             };
