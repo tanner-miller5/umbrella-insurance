@@ -15,6 +15,9 @@ export default function SelectCoverageAmount(){
     const env = useSelector((state: RootState) => {
         return state.environment.env;
     });  
+    const username = useSelector((state: RootState) => {
+        return state.user.username;
+    });
     const selectedPremiumAmount = useSelector((state: RootState) => {
         return state.policy.selectedPremiumAmount;
     }) || 0;  
@@ -29,7 +32,11 @@ export default function SelectCoverageAmount(){
         }, []
     );
     function onClickNext(event: any) {
-        navigate("/");
+        if(username === undefined) {
+            navigate("/signIn");
+        } else {
+            navigate("/");
+        }
     }
     function onClickBack() {
         navigate("/selectCoverageAmount");

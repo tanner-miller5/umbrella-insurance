@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/Store';
 import { toObject } from '../../utils/Parser';
 import { callReadPerilRestEndpoints } from '../../endpoints/rest/perils/v1/PerilRestEndpoints';
-import SelectPerilRow from './SelectPerilRow';
 import { useNavigate } from 'react-router-dom';
 import { updateLoadingState } from '../../redux/reducers/LoadingReducer';
+import SelectPerilRow from './SelectPerilRow';
 
 export default function SelectPeril(){
     const navigate = useNavigate();

@@ -89,7 +89,7 @@ public class StateRestEndpoints {
                     stateList.add(state.get());
                 }
             } else {
-                stateList = stateService.getStates();
+                stateList = stateService.getStatesOrderByStateName();
             }
         } catch(NotFoundException e) {
             logger.error("Logging Request Number: {}, message: {}", currentRequestNumber, e.getMessage());

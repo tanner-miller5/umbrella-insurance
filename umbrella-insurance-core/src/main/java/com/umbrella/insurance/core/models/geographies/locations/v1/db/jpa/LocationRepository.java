@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface LocationRepository extends JpaRepository<Location, Long> {
     Optional<Location> getLocationByLocationName(String locationName);
     void deleteLocationByLocationName(String locationName);
-    @Query(value = "SELECT l.* FROM locations l, cities c, states s WHERE l.city_id = c.city_id AND l.state_id=s.state_id AND s.state_name=:state ORDER BY l.location_name ASC",
+    @Query(value = "SELECT l.* FROM locations l join cities c on l.city_id = c.city_id join states s on s.state_id = l.state_id WHERE l.city_id = c.city_id AND l.state_id=s.state_id AND s.state_name=:state ORDER BY l.location_name ASC",
             nativeQuery = true)
     List<Location> getLocationsByState(@Param("state") String state);
 }

@@ -50,7 +50,7 @@ import AboutUs from '../aboutUs/AboutUs';
 import InsurerOrInsured from '../createPolicyFlow/SelectInsurerOrInsured';
 import CreatePolicy from '../createPolicyFlow/CreatePolicyStart';
 import PerilTypes from '../perils/PerilTypes';
-import SelectPeril from '../perils/SelectPeril';
+import SelectPeril from '../createPolicyFlow/SelectPeril';
 import SelectState from '../createPolicyFlow/SelectState';
 import SelectCity from '../createPolicyFlow/SelectCity';
 import SelectPeriodCoverage from '../createPolicyFlow/SelectPeriodCoverage';

@@ -2,6 +2,7 @@ package com.umbrella.insurance.core.models.geographies.states.v1.db.jpa;
 
 import com.umbrella.insurance.core.models.entities.State;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -22,6 +23,10 @@ public class StateServiceImpl implements StateService {
     @Override
     public List<State> getStates() {
         return stateRepository.findAll();
+    }
+    @Override
+    public List<State> getStatesOrderByStateName(){
+        return stateRepository.findAll(Sort.by(Sort.Direction.ASC,"stateName"));
     }
 
     @Override

@@ -7,6 +7,7 @@ import java.util.Optional;
 public interface StateService {
     State saveState(State state);
     List<State> getStates();
+    List<State> getStatesOrderByStateName();
     State updateState(State state);
     void deleteState(Long stateId);
     Optional<State> getStateByStateName(String stateName);
