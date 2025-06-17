@@ -23,6 +23,39 @@ import { toObject } from '../../utils/Parser';
 import { User } from '../../models/users/v1/User';
 import { callReadItemRestEndpoints } from '../../endpoints/rest/items/v1/ItemRestEndpoints';
 
+export function toUTCString(date:Date) : string {
+    let year = date.getUTCFullYear() + "";
+    let month = (date.getUTCMonth() + 1) + "";
+    if (month.length < 2) {
+        month = "0" + month;
+    }
+    let day = date.getUTCDate() + "";
+    if (day.length < 2) {
+        day = "0" + day;
+    }
+    let hours = date.getUTCHours() + "";
+    if (hours.length < 2) {
+        hours = "0" + hours;
+    }
+    let minutes = date.getUTCMinutes() + "";
+    if (minutes.length < 2) {
+        minutes = "0" + minutes;
+    }
+    let seconds = date.getUTCSeconds() + "";
+    if (seconds.length < 2) {
+        seconds = "0" + seconds;
+    }
+    let milliseconds = date.getUTCMilliseconds() + "";
+    if (milliseconds.length < 2) {
+        milliseconds = "0" + milliseconds;
+    }
+    let formattedCurrentTime = year + "-" + month + "-" +
+    day + " " + hours + ":" + minutes + ":" +
+    seconds + "." + milliseconds;
+    return formattedCurrentTime
+
+}
+
 export default function Header() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -392,38 +425,7 @@ export default function Header() {
     let endDateTime: string | undefined = useSelector((state: RootState)=>{
         return state.user.endDateTime;
     });
-    function toUTCString(date:Date) : string {
-        let year = date.getUTCFullYear() + "";
-        let month = (date.getUTCMonth() + 1) + "";
-        if (month.length < 2) {
-            month = "0" + month;
-        }
-        let day = date.getUTCDate() + "";
-        if (day.length < 2) {
-            day = "0" + day;
-        }
-        let hours = date.getUTCHours() + "";
-        if (hours.length < 2) {
-            hours = "0" + hours;
-        }
-        let minutes = date.getUTCMinutes() + "";
-        if (minutes.length < 2) {
-            minutes = "0" + minutes;
-        }
-        let seconds = date.getUTCSeconds() + "";
-        if (seconds.length < 2) {
-            seconds = "0" + seconds;
-        }
-        let milliseconds = date.getUTCMilliseconds() + "";
-        if (milliseconds.length < 2) {
-            milliseconds = "0" + milliseconds;
-        }
-        let formattedCurrentTime = year + "-" + month + "-" +
-        day + " " + hours + ":" + minutes + ":" +
-        seconds + "." + milliseconds;
-        return formattedCurrentTime
 
-    }
     useEffect(()=>{
         const intervalId = setInterval(()=>{
             let currentTime = new Date(Date.now());
@@ -472,9 +474,9 @@ export default function Header() {
             {!didUserLoad && <li onClick={onClickCreateUser} className={createUserClassName}>Create User</li>}
             {!didUserLoad && <li onClick={onClickResetPassword} className={resetPasswordClassName}>Reset Password</li>}
             {didUserLoad && <li onClick={onClickChangePassword} className={changePasswordClassName}>Change Password</li>}
-            {didUserLoad && <li onClick={onClickChangeTwoFactorAuthType} className={changeTwoFactorAuthTypeClassName}>Change Two Factor Auth</li>}
-            {didUserLoad && !isEmailAddressVerified && <li onClick={onClickVerifyEmail} className={confirmUserEmailClassName}>Confirm Email Address</li>}
-            {didUserLoad && !isPhoneNumberVerified && <li onClick={onClickVerifyPhoneNumber} className={confirmUserPhoneClassName}>Confirm Phone Number</li>}
+            {false && didUserLoad && <li onClick={onClickChangeTwoFactorAuthType} className={changeTwoFactorAuthTypeClassName}>Change Two Factor Auth</li>}
+            {false && didUserLoad && !isEmailAddressVerified && <li onClick={onClickVerifyEmail} className={confirmUserEmailClassName}>Confirm Email Address</li>}
+            {false && didUserLoad && !isPhoneNumberVerified && <li onClick={onClickVerifyPhoneNumber} className={confirmUserPhoneClassName}>Confirm Phone Number</li>}
             {isCustomerSupport && <li onClick={onClickCreateBettingEvent} className={createBettingEventClassName}>Create Betting Event</li>}
             {didUserLoad && <li onClick={onClickDeleteUser} className={deleteUserClassName}>Delete User</li>}
             {isCustomerSupport && <li onClick={onClickCreateFootballEvent} className={createFootballEventClassName}>Create Football Event</li>}
@@ -486,9 +488,9 @@ export default function Header() {
             {didUserLoad && <li onClick={onClickReviews} className={reviewsClassName}>Reviews</li>}
             {reviews.length < 1 && isCustomer && didUserLoad && <li onClick={onClickCreateReview} className={createReviewClassName}>Create Review</li>}
             {showEditReview && isCustomer && didUserLoad && <li onClick={onClickEditReview} className={editReviewClassName}>Edit Review</li>}
-            {didUserLoad && <li onClick={onClickItems} className={itemsClassName}>Items</li>}
-            {didUserLoad && <li onClick={onClickCheckout} className={checkoutClassName}>Checkout</li>}
-            {didUserLoad && <li onClick={onClickCart} className={cartClassName}>Cart</li>}
+            {false && didUserLoad && <li onClick={onClickItems} className={itemsClassName}>Items</li>}
+            {false && didUserLoad && <li onClick={onClickCheckout} className={checkoutClassName}>Checkout</li>}
+            {false && didUserLoad && <li onClick={onClickCart} className={cartClassName}>Cart</li>}
             <li onClick={onClickAboutUs} className={aboutUsClassName}>About Us</li>
             <li onClick={onClickPerilTypes} className={perilTypesClassName}>Types of Perils</li>
             <li onClick={onClickCreatePolicy} className={createPolicyClassName}>Create Policy</li>
