@@ -89,7 +89,7 @@ public class OrderTypeRestEndpoints {
                     orderTypeList.add(orderType.get());
                 }
             } else {
-                throw new NotImplementedException("This read query is not implemented orderType ");
+                orderTypeList = orderTypeService.getOrderTypes();
             }
         } catch(NotFoundException e) {
             logger.error("Logging Request Number: {}, message: {}", currentRequestNumber, e.getMessage());

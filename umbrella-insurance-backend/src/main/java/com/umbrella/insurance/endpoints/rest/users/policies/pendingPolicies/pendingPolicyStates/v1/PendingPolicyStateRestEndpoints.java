@@ -89,7 +89,7 @@ public class PendingPolicyStateRestEndpoints {
                     pendingPolicyStateList.add(pendingPolicyState.get());
                 }
             } else {
-                throw new NotImplementedException("This read query is not implemented pendingPolicyState");
+                pendingPolicyStateList = pendingPolicyStateService.getPendingPolicyStates();
             }
         } catch(NotFoundException e) {
             logger.error("Logging Request Number: {}, message: {}", currentRequestNumber, e.getMessage());

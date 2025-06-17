@@ -1,12 +1,24 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCurrentPage, updateErrorMessage, updateIsErrorOpen } from "../../redux/reducers/AppReducer";
+import { updateCurrentPage, updateErrorMessage, updateIsErrorOpen, updateOrderTypes, updatePendingPolicyStates, updatePendingPolicyTypes, updateUnits } from "../../redux/reducers/AppReducer";
 import { RootState } from "../../redux/store/Store";
-import { updateEndPolicyMonthAndYear, updatePolicyFor, updateSelectedMagnitude, updateSelectedPremiumAmount, updateStartPolicyMonthAndYear } from "../../redux/reducers/PolicyReducer";
+import { updateEndPolicyMonthAndYear, updatePeril, updatePolicyFor, updateSelectedMagnitude, updateSelectedPremiumAmount, updateStartPolicyMonthAndYear } from "../../redux/reducers/PolicyReducer";
 import { useNavigate } from "react-router-dom";
 import { PendingPolicy } from "../../models/users/policies/pendingPolicies/v1/PendingPolicy";
 import { toUTCString } from "../headers/Header";
 import { Location} from "../../models/geographies/locations/v1/Location";
+import { updateLoadingState } from "../../redux/reducers/LoadingReducer";
+import { callReadOrderTypeRestEndpoints } from "../../endpoints/rest/orderTypes/v1/OrderTypeRestEndpoints";
+import { toObject } from "../../utils/Parser";
+import { PendingPolicyType } from "../../models/users/policies/pendingPolicies/pendingPolicyTypes/v1/PendingPolicyType";
+import { callReadPendingPolicyTypeRestEndpoints } from "../../endpoints/rest/users/policies/pendingPolicies/pendingPoliciyTypes/v1/PendingPolicyTypeRestEndpoints";
+import { callReadPendingPolicyStateRestEndpoints } from "../../endpoints/rest/users/policies/pendingPolicies/pendingPolicyStates/v1/PendingPolicyStateRestEndpoints";
+import { callReadUnitsRestEndpoint } from "../../endpoints/rest/units/v1/UnitRestEndpoints";
+import { Session } from "../../models/users/sessions/v1/Session";
+import { callReadSessionRestEndpointsBySessionCode } from "../../endpoints/rest/users/sessions/v1/SessionRestEndpoints";
+import { updateSession } from "../../redux/reducers/UserReducer";
+import { callReadPerilRestEndpointsByPerilName } from "../../endpoints/rest/perils/v1/PerilRestEndpoints";
+import SelectInsurerOrInsured from "./SelectInsurerOrInsured";
 
 export default function SelectCoverageAmount(){
     const navigate = useNavigate();
@@ -49,6 +61,27 @@ export default function SelectCoverageAmount(){
     const selectedPeril = useSelector((state: RootState) => {
         return state.policy.selectedPeril;
     }) || "";
+    const orderTypes = useSelector((state: RootState) => {
+        return state.app.orderTypes;
+    });
+    const pendingPolicyTypes = useSelector((state: RootState) => {
+        return state.app.pendingPolicyTypes;
+    });
+    const pendingPolicyStates = useSelector((state: RootState) => {
+        return state.app.pendingPolicyStates;
+    });
+    const units = useSelector((state: RootState) => {
+        return state.app.units;
+    });
+    const sessionCode = useSelector((state: RootState) => {
+        return state.user.sessionCode;
+    });
+    const session = useSelector((state: RootState) => {
+        return state.user.session;
+    });
+    const peril = useSelector((state: RootState) => {
+        return state.policy.peril;
+    });
     let location: Location;
     if(cities) {
         for(let i = 0; i < cities.length; i++) {
@@ -82,21 +115,125 @@ export default function SelectCoverageAmount(){
             pendingPolicy.fee = undefined;
             pendingPolicy.impliedProbability = selectedPremiumAmount / selectedCoverageAmount;
             pendingPolicy.location = location;
-            pendingPolicy.orderType = undefined;
+            pendingPolicy.orderType = orderTypes[1];
             pendingPolicy.originalPendingPolicy = undefined;
             pendingPolicy.pendingPolicyName = undefined;
-            pendingPolicy.pendingPolicyState = undefined;
-            pendingPolicy.pendingPolicyType = undefined;
-            pendingPolicy.peril = undefined;
+            pendingPolicy.pendingPolicyState = pendingPolicyStates[1];
+            if(policyFor === "Insurer") {
+                pendingPolicy.pendingPolicyType = pendingPolicyTypes[0];
+            } else {
+                pendingPolicy.pendingPolicyType = pendingPolicyTypes[1];
+            }
+            pendingPolicy.peril = peril;
             pendingPolicy.premiumAmount = selectedPremiumAmount;
-            pendingPolicy.session = undefined;
+            pendingPolicy.session = session;
             pendingPolicy.splitPendingPolicy1 = undefined;
             pendingPolicy.splitPendingPolicy2 = undefined;
-            pendingPolicy.unit = undefined;
-
+            if(units) {
+                pendingPolicy.unit = units[0];
+            }
             navigate("/");
         }
     }
+
+    useEffect(
+        function() {
+            async function getOrderTypes() {
+                dispatch(updateLoadingState(true));
+                if(orderTypes.length == 0) {
+                    const orderTypesResponse = await callReadOrderTypeRestEndpoints(env, domain);
+                    if(orderTypesResponse) {
+                        dispatch(updateOrderTypes(toObject(orderTypesResponse)));
+                    }
+                }
+                dispatch(updateLoadingState(false));
+            };
+            getOrderTypes();
+        }, []
+    )
+
+    useEffect(
+        function() {
+            async function getPeril(peril: string) {
+                dispatch(updateLoadingState(true));
+                if(peril === undefined) {
+                    const perilResponse = await callReadPerilRestEndpointsByPerilName(
+                        selectedPeril, env, domain);
+                    if(perilResponse) {
+                        dispatch(updatePeril(toObject(perilResponse)));
+                    }
+                }
+                dispatch(updateLoadingState(false));
+            };
+            getPeril(selectedPeril);
+        }, []
+    )
+
+    useEffect(
+        function() {
+            async function getPendingPolicyTypes() {
+                dispatch(updateLoadingState(true));
+                if(pendingPolicyTypes.length == 0) {
+                    const pendingPolicyTypesResponse = await callReadPendingPolicyTypeRestEndpoints(env, domain);
+                    if(pendingPolicyTypesResponse) {
+                        dispatch(updatePendingPolicyTypes(toObject(pendingPolicyTypesResponse)));
+                    }
+                }
+                dispatch(updateLoadingState(false));
+            };
+            getPendingPolicyTypes();
+        }, []
+    )
+
+    useEffect(
+        function() {
+            async function getSession(sessionCode?: string) {
+                dispatch(updateLoadingState(true));
+                if(session === undefined) {
+                    const sessionResponse = await callReadSessionRestEndpointsBySessionCode(
+                        sessionCode || "", env, domain);
+                    if(sessionResponse) {
+                        dispatch(updateSession(toObject(sessionResponse)));
+                    }
+                }
+                dispatch(updateLoadingState(false));
+            };
+            getSession(sessionCode);
+        }, []
+    )
+
+    useEffect(
+        function() {
+            async function getPendingPolicyStates() {
+                dispatch(updateLoadingState(true));
+                if(pendingPolicyStates.length == 0) {
+                    const pendingPolicyStatesResponse = await callReadPendingPolicyStateRestEndpoints(env, domain);
+                    if(pendingPolicyStatesResponse) {
+                        dispatch(updatePendingPolicyStates(toObject(pendingPolicyStatesResponse)));
+                    }
+                }
+                dispatch(updateLoadingState(false));
+            };
+            getPendingPolicyStates();
+        }, []
+    )
+
+    useEffect(
+        function() {
+            async function getUnits() {
+                dispatch(updateLoadingState(true));
+                if(units === undefined) {
+                    const unitsResponse = await callReadUnitsRestEndpoint(env, domain);
+                    if(unitsResponse) {
+                        dispatch(updateUnits(toObject(unitsResponse)));
+                    }
+                }
+                dispatch(updateLoadingState(false));
+            };
+            getUnits();
+        }, []
+    )
+
     function onClickBack() {
         navigate("/selectCoverageAmount");
     }

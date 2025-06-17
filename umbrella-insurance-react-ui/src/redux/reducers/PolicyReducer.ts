@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { Peril } from '../../models/perils/v1/Peril';
 
 export class PolicyState {
   policyFor?: string;
@@ -12,6 +13,7 @@ export class PolicyState {
   selectedMagnitude?: number;
   selectedCoverageAmount?: number;
   selectedPremiumAmount?: number;
+  peril?: Peril;
   constructor() {
   }
 }
@@ -86,6 +88,12 @@ export const policySlice = createSlice({
         selectedPremiumAmount: action.payload
       }
     },
+    updatePeril: (state, action) => {
+      return {
+        ...state,
+        peril: action.payload
+      }
+    },
   }
 })
 
@@ -95,7 +103,7 @@ export const { updatePolicyFor, updateSelectedPeril,
     updateStartPolicyMonthAndYear, updateEndPolicyMonthAndYear,
     updateSelectedMagnitude, updateSelectedPerilMinMagnitude,
     updateSelectedPerilMaxMagnitude, updateSelectedCoverageAmount,
-    updateSelectedPremiumAmount
+    updateSelectedPremiumAmount, updatePeril
  } = policySlice.actions
 
 export default policySlice.reducer

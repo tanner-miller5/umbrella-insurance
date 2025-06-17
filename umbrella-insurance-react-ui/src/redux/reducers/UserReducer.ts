@@ -3,6 +3,7 @@ import { ApplicationRole } from '../../models/applicationRoles/v1/ApplicationRol
 import { Item } from '../../models/items/v1/Item';
 import { Cart } from '../../models/carts/v1/Cart';
 import { CartItemRelationship } from '../../models/cartItemRelationships/v1/CartItemRelationship';
+import { Session } from '../../models/users/sessions/v1/Session';
 
 export class UserState {
   username?: string;
@@ -53,6 +54,7 @@ export class UserState {
   cartItems?: Item[];
   cart?: Cart;
   cartItemRelationship?: CartItemRelationship[];
+  session?: Session;
   constructor() {
     this.didUserLoad = false;
   }
@@ -416,6 +418,12 @@ export const userSlice = createSlice({
         cartItemRelationship: action.payload
       }
     },
+    updateSession: (state, action) => {
+      return {
+        ...state,
+        session: action.payload
+      }
+    },
   }
 })
 
@@ -433,7 +441,7 @@ export const { updateUsername, updateTmpUsername, updatePassword, updateEmailAdd
     updateIsEmailAddressVerified, updateCantSeeQrCode, updateIsPhoneNumberVerified, 
     updateIsAuthAppVerified, updateCreateBettingEventName, updateCreateBettingEventDateTime,
     updateApplicationRoles, updateEndDateTime, updateUserId, updateCartItems, updateCart,
-    updateCartItemRelationship
+    updateCartItemRelationship, updateSession
 } = userSlice.actions
 
 export default userSlice.reducer

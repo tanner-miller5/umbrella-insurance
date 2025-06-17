@@ -51,6 +51,36 @@ export async function callReadPendingPolicyTypeRestEndpointsByPendingPolicyTypeI
     return pendingPolicyTypes;
 }
 
+export async function callReadPendingPolicyTypeRestEndpoints(
+    env: string, domain: string): Promise<PendingPolicyType[] | undefined> {
+    let config: AxiosRequestConfig = {
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json',
+        }
+    }
+
+    let url = `${domain}/rest/pendingPolicyTypes/v1?env=${env}`;
+    let pendingPolicyTypes: PendingPolicyType[] | undefined = [];
+    try {
+        let readPendingPolicyTypeListResponse: AxiosResponse<PendingPolicyType[]> = await axios.get(url, config);
+        let pendingPolicyTypeList = readPendingPolicyTypeListResponse.data;
+        for(let i = 0; i < pendingPolicyTypeList.length; i++) {
+            pendingPolicyTypes[i] = new PendingPolicyType(pendingPolicyTypeList[i]);
+        }
+    } catch(e:any) {
+        let loggingMessage: LoggingMessage = new LoggingMessage();        
+        const url = window.location.href;         
+        loggingMessage.appName = 'umbrella-insurance-frontend';         
+        loggingMessage.callingLoggerName = url;        
+        loggingMessage.loggingPayload = `ERROR:${e.message}`;         
+        loggingMessage.logLevel = "ERROR";         
+        callCreateLoggingRestEndpoints(loggingMessage, env, domain);         
+        console.error(loggingMessage.loggingPayload);
+    }
+    return pendingPolicyTypes;
+}
+
 export async function callReadPendingPolicyTypeRestEndpointsByPendingPolicyTypeName(
     pendingPolicyTypeName: string, env: string, domain: string): Promise<PendingPolicyType[] | undefined> {
     let config: AxiosRequestConfig = {

@@ -5,6 +5,9 @@ import { Unit } from '../../models/units/v1/Unit';
 import { Review } from '../../models/reviews/v1/Review';
 import { Item } from '../../models/items/v1/Item';
 import { Peril } from '../../models/perils/v1/Peril';
+import { OrderType } from '../../models/orderTypes/v1/OrderType';
+import { PendingPolicyType } from '../../models/users/policies/pendingPolicies/pendingPolicyTypes/v1/PendingPolicyType';
+import { PendingPolicyState } from '../../models/users/policies/pendingPolicies/pendingPolicyStates/v1/PendingPolicyState';
 
 
 export class AppState {
@@ -24,6 +27,9 @@ export class AppState {
   frontendAppVersion?: string;
   items: Item[];
   perils: Peril[];
+  orderTypes: OrderType[];
+  pendingPolicyTypes: PendingPolicyType[];
+  pendingPolicyStates: PendingPolicyState[];
   constructor() {
     this.currentPage = "/";
     this.announcements = [];
@@ -36,6 +42,9 @@ export class AppState {
     this.isTermsAndConditionsOpen = false;
     this.items = [];
     this.perils = [];
+    this.orderTypes = [];
+    this.pendingPolicyTypes = [];
+    this.pendingPolicyStates = [];
   }
 }
 
@@ -139,6 +148,24 @@ export const appSlice = createSlice({
         perils: action.payload
       }
     },
+    updateOrderTypes: (state, action) => {
+      return {
+        ...state,
+        orderTypes: action.payload
+      }
+    },
+    updatePendingPolicyTypes: (state, action) => {
+      return {
+        ...state,
+        pendingPolicyTypes: action.payload
+      }
+    },
+    updatePendingPolicyStates: (state, action) => {
+      return {
+        ...state,
+        pendingPolicyStates: action.payload
+      }
+    },
   }
 })
 
@@ -148,7 +175,8 @@ export const { updateCurrentPage, updateAnnouncements, updateFaqs,
   updateUnits, updateReviews, updateIsWarningOpen, updateWarningMessage,
   updateIsPrivacyPolicyOpen, updateIsTermsAndConditionsOpen,
   updateFrontendAppVersion, updateBackendAppVersion, updateItems,
-  updatePerils
+  updatePerils, updateOrderTypes, updatePendingPolicyTypes,
+  updatePendingPolicyStates
  } = appSlice.actions
 
 export default appSlice.reducer

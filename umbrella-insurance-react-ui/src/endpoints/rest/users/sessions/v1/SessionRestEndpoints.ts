@@ -54,16 +54,17 @@ export async function callReadSessionRestEndpointsBySessionId(
     return sessions;
 }
 
-export async function callReadSessionRestEndpointsByUserId(
-    userId: string, env: string, domain: string): Promise<Session[] | undefined> {
+export async function callReadSessionRestEndpointsBySessionCode(
+    sessionCode: string, env: string, domain: string): Promise<Session[] | undefined> {
     let config: AxiosRequestConfig = {
         headers: {
+            "session": sessionCode,
             "Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json',
         }
     }
 
-    let url = `${domain}/rest/sessions/v1?env=${env}&userId=${userId}`;
+    let url = `${domain}/rest/sessions/v1?env=${env}&sessionCode=${sessionCode}`;
     let sessions: Session[] = [];
     try {
         let readSessionListResponse: AxiosResponse<Session[]> = await axios.get(url, config);

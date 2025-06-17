@@ -81,6 +81,36 @@ export async function callReadPendingPolicyStateRestEndpointsByPendingPolicyStat
     return pendingPolicyStates;
 }
 
+export async function callReadPendingPolicyStateRestEndpoints(
+    env: string, domain: string): Promise<PendingPolicyState[] | undefined> {
+    let config: AxiosRequestConfig = {
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json',
+        }
+    }
+
+    let url = `${domain}/rest/pendingPolicyStates/v1?env=${env}`;
+    let pendingPolicyStates: PendingPolicyState[] | undefined = [];
+    try {
+        let readPendingPolicyStateListResponse: AxiosResponse<PendingPolicyState[]> = await axios.get(url, config);
+        let pendingPolicyStateList = readPendingPolicyStateListResponse.data;
+        for(let i = 0; i < pendingPolicyStateList.length; i++) {
+            pendingPolicyStates[i] = new PendingPolicyState(pendingPolicyStateList[i]);
+        }
+    } catch(e:any) {
+        let loggingMessage: LoggingMessage = new LoggingMessage();        
+        const url = window.location.href;         
+        loggingMessage.appName = 'umbrella-insurance-frontend';
+        loggingMessage.callingLoggerName = url;        
+        loggingMessage.loggingPayload = `ERROR:${e.message}`;         
+        loggingMessage.logLevel = "ERROR";         
+        callCreateLoggingRestEndpoints(loggingMessage, env, domain);         
+        console.error(loggingMessage.loggingPayload);
+    }
+    return pendingPolicyStates;
+}
+
 export async function callUpdatePendingPolicyStateRestEndpoints(
     pendingPolicyState: PendingPolicyState, env: string, domain: string): Promise<PendingPolicyState[]>  {
     let config: AxiosRequestConfig = {

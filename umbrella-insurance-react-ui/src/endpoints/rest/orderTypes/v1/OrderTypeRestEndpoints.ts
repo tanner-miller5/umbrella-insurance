@@ -82,6 +82,36 @@ export async function callReadOrderTypeRestEndpointsByOrderTypeName(
     return orderTypes;
 }
 
+export async function callReadOrderTypeRestEndpoints(
+    env: string, domain: string): Promise<OrderType[] | undefined> {
+    let config: AxiosRequestConfig = {
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json',
+        }
+    }
+
+    let url = `${domain}/rest/orderTypes/v1?env=${env}`;
+    let orderTypes: OrderType[] | undefined = [];
+    try {
+        let readOrderTypeListResponse: AxiosResponse<OrderType[]> = await axios.get(url, config);
+        let orderTypeList = readOrderTypeListResponse.data;
+        for(let i = 0; i < orderTypeList.length; i++) {
+            orderTypes[i] = new OrderType(orderTypeList[i]);
+        }
+    } catch(e:any) {
+        let loggingMessage: LoggingMessage = new LoggingMessage();         
+        const url = window.location.href;         
+        loggingMessage.appName = 'umbrella-insurance-frontend';
+        loggingMessage.callingLoggerName = url;        
+        loggingMessage.loggingPayload = `ERROR:${e.message}`;         
+        loggingMessage.logLevel = "ERROR";         
+        callCreateLoggingRestEndpoints(loggingMessage, env, domain);         
+        console.error(loggingMessage.loggingPayload);
+    }
+    return orderTypes;
+}
+
 export async function callUpdateOrderTypeRestEndpoints(
     orderType: OrderType, env: string, domain: string): Promise<OrderType[]>  {
     let config: AxiosRequestConfig = {
