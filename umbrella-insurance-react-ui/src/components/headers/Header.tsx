@@ -493,7 +493,7 @@ export default function Header() {
             {false && didUserLoad && <li onClick={onClickCart} className={cartClassName}>Cart</li>}
             <li onClick={onClickAboutUs} className={aboutUsClassName}>About Us</li>
             <li onClick={onClickPerilTypes} className={perilTypesClassName}>Types of Perils</li>
-            <li onClick={onClickCreatePolicy} className={createPolicyClassName}>Create Policy</li>
+            {didUserLoad && <li onClick={onClickCreatePolicy} className={createPolicyClassName}>Create Policy</li>}
         </ul>
     </>)
 };

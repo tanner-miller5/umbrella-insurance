@@ -125,7 +125,7 @@ export default function EnterPassword(){
                 }
                 dispatch(updateLoadingState(false));
                 dispatch(updateDidUserLoad(true));
-                navigate("/");
+                navigate("/createPolicy");
             }
         }
         dispatch(updateLoadingState(false));
