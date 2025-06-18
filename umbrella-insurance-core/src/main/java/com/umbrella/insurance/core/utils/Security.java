@@ -88,6 +88,8 @@ import com.umbrella.insurance.core.models.trophies.v1.db.TrophyPrivilege;
 import com.umbrella.insurance.core.models.units.v1.db.UnitPrivilege;
 import com.umbrella.insurance.core.models.userApplicationRoleRelationships.v1.db.jpa.UserApplicationRoleRelationshipService;
 import com.umbrella.insurance.core.models.users.paymentTypes.v1.db.PaymentTypePrivilege;
+import com.umbrella.insurance.core.models.users.policies.pendingPolicies.pendingPolicyStates.v1.db.PendingPolicyStatePrivilege;
+import com.umbrella.insurance.core.models.users.policies.pendingPolicies.pendingPolicyTypes.v1.db.PendingPolicyTypePrivilege;
 import com.umbrella.insurance.core.models.users.sessions.v1.db.SessionPrivilege;
 import com.umbrella.insurance.core.models.users.sessions.v1.db.jpa.SessionService;
 import com.umbrella.insurance.core.models.users.v4.db.UserPrivilege;
@@ -228,6 +230,8 @@ public class Security {
             PlayerRecordPrivilege.PATH + ":" + HttpMethodEnum.GET,
             TeamRecordPrivilege.PATH + ":" + HttpMethodEnum.GET,
             RecordPrivilege.PATH + ":" + HttpMethodEnum.GET,
+            PendingPolicyTypePrivilege.PATH + ":" + HttpMethodEnum.GET,
+            PendingPolicyStatePrivilege.PATH + ":" + HttpMethodEnum.GET,
             RosterPrivilege.PATH + ":" + HttpMethodEnum.GET,
             SchedulePrivilege.PATH + ":" + HttpMethodEnum.GET,
             SeasonTypePrivilege.PATH + ":" + HttpMethodEnum.GET,
