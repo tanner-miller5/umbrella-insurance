@@ -49,4 +49,9 @@ public class PendingPolicyServiceImpl implements PendingPolicyService {
     public void deletePendingPolicyByPendingPolicyName(String pendingPolicyName) {
         pendingPolicyRepository.deleteByPendingPolicyName(pendingPolicyName);
     }
+
+    @Override
+    public List<PendingPolicy> getPendingPoliciesByUserId(Long userId) {
+        return pendingPolicyRepository.getPendingPoliciesByUserId(userId);
+    }
 }

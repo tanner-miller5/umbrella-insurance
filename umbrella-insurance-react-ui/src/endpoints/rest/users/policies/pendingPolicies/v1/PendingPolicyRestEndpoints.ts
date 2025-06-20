@@ -6,9 +6,11 @@ import { LoggingMessage } from "../../../../../../models/logging/v1/LoggingMessa
 import { callCreateLoggingRestEndpoints } from "../../../../logging/v1/LoggingRestEndpoints";
 
 export async function callCreatePendingPolicyRestEndpoints(
-    pendingPolicy: PendingPolicy, env: string, domain: string): Promise<PendingPolicy>  {
+    session: string, pendingPolicy: PendingPolicy, 
+    env: string, domain: string): Promise<PendingPolicy>  {
     let config:AxiosRequestConfig = {
         headers: {
+            "session": session,
             "Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json',
         }
@@ -61,6 +63,37 @@ export async function callReadPendingPolicyRestEndpointsByPendingPolicyName(
     }
 
     let url = `${domain}/rest/pendingPolicies/v1?env=${env}&pendingPolicyName=${pendingPolicyName}`;
+    let pendingPolicys: PendingPolicy[] | undefined = [];
+    try {
+        let readPendingPolicyListResponse: AxiosResponse<PendingPolicy[]> = await axios.get(url, config);
+        let pendingPolicyList = readPendingPolicyListResponse.data;
+        for(let i = 0; i < pendingPolicyList.length; i++) {
+            pendingPolicys[i] = new PendingPolicy(pendingPolicyList[i]);
+        }
+    } catch(e:any) {
+        let loggingMessage: LoggingMessage = new LoggingMessage();        
+        const url = window.location.href;         
+        loggingMessage.appName = 'umbrella-insurance-frontend';
+        loggingMessage.callingLoggerName = url;        
+        loggingMessage.loggingPayload = `ERROR:${e.message}`;         
+        loggingMessage.logLevel = "ERROR";         
+        callCreateLoggingRestEndpoints(loggingMessage, env, domain);         
+        console.error(loggingMessage.loggingPayload);
+    }
+    return pendingPolicys;
+}
+
+export async function callReadPendingPolicyRestEndpointsByUserId(
+    userId: number, sessionId: string, env: string, domain: string): Promise<PendingPolicy[] | undefined> {
+    let config: AxiosRequestConfig = {
+        headers: {
+            "session": sessionId,
+            "Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json',
+        }
+    }
+
+    let url = `${domain}/rest/pendingPolicies/v1?env=${env}&userId=${userId}`;
     let pendingPolicys: PendingPolicy[] | undefined = [];
     try {
         let readPendingPolicyListResponse: AxiosResponse<PendingPolicy[]> = await axios.get(url, config);

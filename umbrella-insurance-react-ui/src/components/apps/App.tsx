@@ -57,6 +57,7 @@ import SelectPeriodCoverage from '../createPolicyFlow/SelectPeriodCoverage';
 import SelectMagnitude from '../createPolicyFlow/SelectMagnitude';
 import SelectCoverageAmount from '../createPolicyFlow/SelectCoverageAmount';
 import SelectPremiumAmount from '../createPolicyFlow/SelectPremiumAmount';
+import ShowPolicies from '../createPolicyFlow/ShowPolicies';
 
 function App() {
 
@@ -146,6 +147,7 @@ function App() {
         <Route path="selectMagnitude" element={<SelectMagnitude />} />
         <Route path="selectCoverageAmount" element={<SelectCoverageAmount />} />
         <Route path="selectPremiumAmount" element={<SelectPremiumAmount />} />
+        <Route path="showPolicies" element={<ShowPolicies />} />
         {/* Using path="*"" means "match anything", so this route
               acts like a catch-all for URLs that we don't have explicit
               routes for. */}

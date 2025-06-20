@@ -63,6 +63,7 @@ public class PendingPolicyRestEndpoints {
             @RequestParam String env,
             @RequestParam(required = false) Long pendingPolicyId,
             @RequestParam(required = false) String pendingPolicyName,
+            @RequestParam(required = false) Long userId,
             @RequestAttribute BigInteger currentRequestNumber,
             ServletRequest request) throws Exception {
         Connection connection = null;
@@ -88,6 +89,8 @@ public class PendingPolicyRestEndpoints {
                     pendingPolicyList = new ArrayList<>();
                     pendingPolicyList.add(pendingPolicy.get());
                 }
+            } else if (userId != null) {
+                pendingPolicyList = pendingPolicyService.getPendingPoliciesByUserId(userId);
             } else {
                 throw new NotImplementedException("This read query is not implemented pendingPolicy ");
             }

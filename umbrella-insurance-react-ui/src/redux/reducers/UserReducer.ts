@@ -4,6 +4,8 @@ import { Item } from '../../models/items/v1/Item';
 import { Cart } from '../../models/carts/v1/Cart';
 import { CartItemRelationship } from '../../models/cartItemRelationships/v1/CartItemRelationship';
 import { Session } from '../../models/users/sessions/v1/Session';
+import { PendingPolicy } from '../../models/users/policies/pendingPolicies/v1/PendingPolicy';
+import { MatchedPolicy } from '../../models/users/policies/matchedPolicies/v1/MatchedPolicy';
 
 export class UserState {
   username?: string;
@@ -55,6 +57,8 @@ export class UserState {
   cart?: Cart;
   cartItemRelationship?: CartItemRelationship[];
   session?: Session;
+  pendingPolicies?: PendingPolicy[];
+  matchedPolicies?: MatchedPolicy[];
   constructor() {
     this.didUserLoad = false;
   }
@@ -424,6 +428,18 @@ export const userSlice = createSlice({
         session: action.payload
       }
     },
+    updatePendingPolicies: (state, action) => {
+      return {
+        ...state,
+        pendingPolicies: action.payload
+      }
+    },
+    updateMatchedPolicies: (state, action) => {
+      return {
+        ...state,
+        matchedPolicies: action.payload
+      }
+    },
   }
 })
 
@@ -441,7 +457,8 @@ export const { updateUsername, updateTmpUsername, updatePassword, updateEmailAdd
     updateIsEmailAddressVerified, updateCantSeeQrCode, updateIsPhoneNumberVerified, 
     updateIsAuthAppVerified, updateCreateBettingEventName, updateCreateBettingEventDateTime,
     updateApplicationRoles, updateEndDateTime, updateUserId, updateCartItems, updateCart,
-    updateCartItemRelationship, updateSession
+    updateCartItemRelationship, updateSession, updatePendingPolicies,
+    updateMatchedPolicies
 } = userSlice.actions
 
 export default userSlice.reducer

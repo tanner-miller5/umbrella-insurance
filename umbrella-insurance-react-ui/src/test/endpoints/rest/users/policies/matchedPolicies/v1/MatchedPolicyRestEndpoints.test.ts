@@ -260,7 +260,7 @@ var domain: string = "http://localhost:8080";
         expect(fee.unit).toBe(feeResponse.unit);
 
         var pendingPolicyResponse: PendingPolicy = await callCreatePendingPolicyRestEndpoints(
-            pendingPolicy, env, domain);
+            sessionCode, pendingPolicy, env, domain);
         pendingPolicy.id = pendingPolicyResponse.id;
         matchedPolicy.pendingInsuredPolicy = pendingPolicy;
         updatedMatchedPolicy.pendingInsuredPolicy = pendingPolicy;

@@ -13,4 +13,6 @@ public interface PendingPolicyService {
     Optional<PendingPolicy> getPendingPolicyByPendingPolicyName(String pendingPolicyName);
     Optional<PendingPolicy> getPendingPolicyById(Long pendingPolicyId);
     void deletePendingPolicyByPendingPolicyName(String pendingPolicyName);
+    List<PendingPolicy> getPendingPoliciesByUserId(Long userId);
+
 }

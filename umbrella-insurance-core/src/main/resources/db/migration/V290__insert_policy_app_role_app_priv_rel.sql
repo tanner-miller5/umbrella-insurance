@@ -1,0 +1,1 @@
+INSERT INTO public.application_role_application_privilege_relationships (application_role_id,application_privilege_id) VALUES ((SELECT application_role_id from application_roles WHERE application_role_name='customer'),(SELECT application_privilege_id from application_privileges WHERE application_privilege_name='public.pending_policies_CREATE'));
