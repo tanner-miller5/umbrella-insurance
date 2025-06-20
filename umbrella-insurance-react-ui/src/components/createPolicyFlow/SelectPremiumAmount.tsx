@@ -5,7 +5,7 @@ import { RootState } from "../../redux/store/Store";
 import { updateEndPolicyMonthAndYear, updatePeril, updatePolicyFor, updateSelectedMagnitude, updateSelectedPremiumAmount, updateStartPolicyMonthAndYear } from "../../redux/reducers/PolicyReducer";
 import { useNavigate } from "react-router-dom";
 import { PendingPolicy } from "../../models/users/policies/pendingPolicies/v1/PendingPolicy";
-import { toUTCString } from "../headers/Header";
+import { toUTCString, toUTCStringWithTimezone } from "../headers/Header";
 import { Location} from "../../models/geographies/locations/v1/Location";
 import { updateLoadingState } from "../../redux/reducers/LoadingReducer";
 import { callReadOrderTypeRestEndpoints } from "../../endpoints/rest/orderTypes/v1/OrderTypeRestEndpoints";
@@ -110,15 +110,15 @@ export default function SelectCoverageAmount(){
             pendingPolicy.canceledDateTime = undefined;
             pendingPolicy.coverageAmount = selectedCoverageAmount;
             let currentTime = new Date(Date.now());
-            pendingPolicy.createdDateTime = toUTCString(currentTime);
-            pendingPolicy.endDate = endPolicyMonthAndYear;
-            pendingPolicy.startDate = startPolicyMonthAndYear;
+            pendingPolicy.createdDateTime = toUTCStringWithTimezone(currentTime);
+            pendingPolicy.endDate = endPolicyMonthAndYear + "-01";
+            pendingPolicy.startDate = startPolicyMonthAndYear + "-01";
             pendingPolicy.fee = undefined;
             pendingPolicy.impliedProbability = selectedPremiumAmount / selectedCoverageAmount;
             pendingPolicy.location = location;
             pendingPolicy.orderType = orderTypes[1];
             pendingPolicy.originalPendingPolicy = undefined;
-            pendingPolicy.pendingPolicyName = undefined;
+            pendingPolicy.pendingPolicyName = peril?.perilName + "-" + sessionCode + "-" + currentTime;
             pendingPolicy.pendingPolicyState = pendingPolicyStates[1];
             if(policyFor === "Insurer") {
                 pendingPolicy.pendingPolicyType = pendingPolicyTypes[0];
@@ -157,13 +157,14 @@ export default function SelectCoverageAmount(){
 
     useEffect(
         function() {
-            async function getPeril(peril: string) {
+            async function getPeril(selectedPeril: string) {
+                console.log('getPeril ' + selectedPeril);
                 dispatch(updateLoadingState(true));
                 if(peril === undefined) {
                     const perilResponse = await callReadPerilRestEndpointsByPerilName(
                         selectedPeril, env, domain);
                     if(perilResponse) {
-                        dispatch(updatePeril(toObject(perilResponse)));
+                        dispatch(updatePeril(toObject(perilResponse[0])));
                     }
                 }
                 dispatch(updateLoadingState(false));
@@ -196,7 +197,7 @@ export default function SelectCoverageAmount(){
                     const sessionResponse = await callReadSessionRestEndpointsBySessionCode(
                         sessionCode || "", env, domain);
                     if(sessionResponse) {
-                        dispatch(updateSession(toObject(sessionResponse)));
+                        dispatch(updateSession(toObject(sessionResponse[0])));
                     }
                 }
                 dispatch(updateLoadingState(false));

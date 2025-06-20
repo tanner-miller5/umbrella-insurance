@@ -56,6 +56,39 @@ export function toUTCString(date:Date) : string {
 
 }
 
+export function toUTCStringWithTimezone(date:Date) : string {
+    let year = date.getUTCFullYear() + "";
+    let month = (date.getUTCMonth() + 1) + "";
+    if (month.length < 2) {
+        month = "0" + month;
+    }
+    let day = date.getUTCDate() + "";
+    if (day.length < 2) {
+        day = "0" + day;
+    }
+    let hours = date.getUTCHours() + "";
+    if (hours.length < 2) {
+        hours = "0" + hours;
+    }
+    let minutes = date.getUTCMinutes() + "";
+    if (minutes.length < 2) {
+        minutes = "0" + minutes;
+    }
+    let seconds = date.getUTCSeconds() + "";
+    if (seconds.length < 2) {
+        seconds = "0" + seconds;
+    }
+    let milliseconds = date.getUTCMilliseconds() + "";
+    if (milliseconds.length < 2) {
+        milliseconds = "0" + milliseconds;
+    }
+    let formattedCurrentTime = year + "-" + month + "-" +
+    day + "T" + hours + ":" + minutes + ":" +
+    seconds + "." + milliseconds + "Z";
+    return formattedCurrentTime
+
+}
+
 export default function Header() {
     const navigate = useNavigate();
     const dispatch = useDispatch();

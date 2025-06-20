@@ -65,9 +65,7 @@ export default function ShowPolicies() {
 
             />);
     }
-    function onClickBack() {
-        navigate("/selectPremiumAmount");
-    }
+
     if(isLoadingOpen) {
         return (
             <div className="loadingBackground">
@@ -78,8 +76,11 @@ export default function ShowPolicies() {
     return (    
         <div className='column2'>
             <h1>Policies</h1>
-            {rows}
-            <button onClick={onClickBack}>Back</button>
+            <table>
+                <tbody>
+                {rows}
+                </tbody>
+            </table>
         </div> 
     );
 };
