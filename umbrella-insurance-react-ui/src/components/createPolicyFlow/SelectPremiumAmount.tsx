@@ -104,6 +104,16 @@ export default function SelectCoverageAmount(){
         if(username === undefined) {
             navigate("/signIn");
         } else {
+            if(Number(selectedPremiumAmount)>= Number(selectedCoverageAmount)) {
+                dispatch(updateIsErrorOpen(true));
+                dispatch(updateErrorMessage("Premium Amount can't be greater than coverage amount"));
+                return;
+            }
+            if(Number(selectedPremiumAmount) === 0) {
+                dispatch(updateIsErrorOpen(true));
+                dispatch(updateErrorMessage("Premium Amount can't be 0"));
+                return;
+            }
             let pendingPolicy: PendingPolicy = new PendingPolicy();
             pendingPolicy.accountBalanceCanceledEscrowTransaction = undefined;
             pendingPolicy.accountBalanceEscrowTransaction = undefined;

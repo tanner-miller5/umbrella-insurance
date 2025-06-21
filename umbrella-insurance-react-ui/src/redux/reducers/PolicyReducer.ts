@@ -11,6 +11,8 @@ export class PolicyState {
   selectedCity?: string;
   startPolicyMonthAndYear?: string;
   endPolicyMonthAndYear?: string;
+  startPolicyDate?: string;
+  endPolicyDate?: string;
   selectedMagnitude?: number;
   selectedCoverageAmount?: number;
   selectedPremiumAmount?: number;
@@ -58,6 +60,18 @@ export const policySlice = createSlice({
       return {
         ...state,
         endPolicyMonthAndYear: action.payload
+      }
+    },
+    updateStartPolicyDate: (state, action) => {
+      return {
+        ...state,
+        startPolicyDate: action.payload
+      }
+    },
+    updateEndPolicyDate: (state, action) => {
+      return {
+        ...state,
+        endPolicyDate: action.payload
       }
     },
     updateSelectedMagnitude: (state, action) => {
@@ -112,7 +126,8 @@ export const { updatePolicyFor, updateSelectedPeril,
     updateSelectedMagnitude, updateSelectedPerilMinMagnitude,
     updateSelectedPerilMaxMagnitude, updateSelectedCoverageAmount,
     updateSelectedPremiumAmount, updatePeril,
-    updateSelectedPendingPolicy
+    updateSelectedPendingPolicy, updateStartPolicyDate,
+    updateEndPolicyDate
  } = policySlice.actions
 
 export default policySlice.reducer

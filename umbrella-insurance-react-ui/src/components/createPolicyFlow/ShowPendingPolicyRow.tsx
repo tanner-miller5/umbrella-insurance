@@ -25,15 +25,15 @@ export default function ShowPendingPolicyRow({
 
     return (
         <tr className={pendingPolicyClassName} >
-            Peril:{pendingPolicy.peril?.perilName},
-            Start Date:{pendingPolicy.startDate},
-            End Date:{pendingPolicy.endDate},
-            Coverage Amount:{pendingPolicy.coverageAmount},
-            Premium Amount:{pendingPolicy.premiumAmount},
-            City:{pendingPolicy?.location?.city?.cityName},
-            State:{pendingPolicy?.location?.state?.stateName},
-            Implied Probability:{pendingPolicy?.impliedProbability},
-            Unit Name:{pendingPolicy?.unit?.unitName},
-            Pending Policy State Name:{pendingPolicy?.pendingPolicyState?.pendingPolicyStateName},
+            <td>{pendingPolicy.peril?.perilName}</td>
+            <td>{pendingPolicy.startDate}</td>
+            <td>{pendingPolicy.endDate}</td>
+            <td>{pendingPolicy.coverageAmount}</td>
+            <td>{pendingPolicy.premiumAmount}</td>
+            <td>{pendingPolicy?.location?.city?.cityName}</td>
+            <td>{pendingPolicy?.location?.state?.stateName}</td>
+            <td>{((pendingPolicy.impliedProbability || 0) * 100).toFixed(2)}%</td>
+            <td>{pendingPolicy?.unit?.unitName}</td>
+            <td>{pendingPolicy?.pendingPolicyState?.pendingPolicyStateName}</td>
         </tr>);
 }

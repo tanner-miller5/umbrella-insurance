@@ -44,13 +44,13 @@ export default function ShowPolicies() {
         function() {
             async function getPendingPolicies() {
                 dispatch(updateLoadingState(true));
-                if(pendingPolicies.length === 0) {
+                //if(pendingPolicies.length === 0) {
                     const pendingPoliciesResponse = await callReadPendingPolicyRestEndpointsByUserId(
                         userId, session, env, domain);
                     if(pendingPoliciesResponse) {
                         dispatch(updatePendingPolicies(toObject(pendingPoliciesResponse)));
                     }
-                }
+                //}
                 dispatch(updateLoadingState(false));
             };
             getPendingPolicies();
@@ -77,8 +77,22 @@ export default function ShowPolicies() {
         <div className='column2'>
             <h1>Policies</h1>
             <table>
+                <thead>
+                    <tr>
+                        <th>Peril Name</th>
+                        <th>Coverage Start Date</th>
+                        <th>Coverage End Date</th>
+                        <th>Coverage Amount</th>
+                        <th>Premium Amount</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Implied Probability</th>
+                        <th>Unit</th>
+                        <th>Pending Policy State</th>
+                    </tr>
+                </thead>
                 <tbody>
-                {rows}
+                    {rows}
                 </tbody>
             </table>
         </div> 

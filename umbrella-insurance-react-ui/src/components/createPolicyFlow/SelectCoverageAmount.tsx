@@ -30,6 +30,11 @@ export default function SelectCoverageAmount(){
         }, []
     );
     function onClickNext(event: any) {
+        if(Number(selectedCoverageAmount) === 0) {
+            dispatch(updateIsErrorOpen(true));
+            dispatch(updateErrorMessage("Coverage Amount can't be 0"));
+            return;
+        }
         navigate("/selectPremiumAmount");
     }
     function onClickBack() {

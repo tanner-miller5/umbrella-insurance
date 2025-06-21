@@ -13,8 +13,8 @@ mvn test -DSPRING_DATASOURCE_URL="jdbc:postgresql://localhost:5432/umbrella-insu
 
 
 Docker builds
-docker build -f Dockerfile-umbrella-insurance-backend -t tmillermillert/umbrella-insurance-backend:1.25 .
-docker build -f Dockerfile-umbrella-insurance-react-ui -t tmillermillert/umbrella-insurance-react-ui:1.25 .
+docker build -f Dockerfile-umbrella-insurance-backend -t tmillermillert/umbrella-insurance-backend:1.26 .
+docker build -f Dockerfile-umbrella-insurance-react-ui -t tmillermillert/umbrella-insurance-react-ui:1.27 .
 
 Local Postgres DB 
 docker run --name some-postgres -e POSTGRES_PASSWORD=umbrella-insurance -e POSTGRES_USER=umbrella-insurance -e POSTGRES_DB=umbrella-insurance -p 5432:5432 -d postgres

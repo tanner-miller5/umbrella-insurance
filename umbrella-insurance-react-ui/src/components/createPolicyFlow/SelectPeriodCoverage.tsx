@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateCurrentPage, updateErrorMessage, updateIsErrorOpen } from "../../redux/reducers/AppReducer";
 import { RootState } from "../../redux/store/Store";
-import { updateEndPolicyMonthAndYear, updatePolicyFor, updateStartPolicyMonthAndYear } from "../../redux/reducers/PolicyReducer";
+import { updateEndPolicyDate, updateEndPolicyMonthAndYear, updatePolicyFor, updateStartPolicyDate, updateStartPolicyMonthAndYear } from "../../redux/reducers/PolicyReducer";
 import { useNavigate } from "react-router-dom";
 
 export default function SelectPeriodCoverage(){
@@ -39,6 +39,14 @@ export default function SelectPeriodCoverage(){
             dispatch(updateIsErrorOpen(true));
             dispatch(updateErrorMessage("Select a start coverage period."));
             return;
+        } else if(!isValidDate(endPolicyMonthAndYear)) {
+            dispatch(updateIsErrorOpen(true));
+            dispatch(updateErrorMessage('Enter date as yyyy-mm'));
+            return;
+        } else if(!isValidDate(startPolicyMonthAndYear)) {
+            dispatch(updateIsErrorOpen(true));
+            dispatch(updateErrorMessage('Enter date as yyyy-mm'));
+            return;
         }
         navigate("/selectCoverageAmount");
     }
@@ -60,11 +68,22 @@ export default function SelectPeriodCoverage(){
         minEnd = startPolicyMonthAndYear;
     }
 
+    function isValidDate(date: string) {
+        const dateRegex = /^[0-9]{4}-[0-9]{2}$/;
+        return dateRegex.test(date);
+    }
+
     function onClickStartPolicyMonthAndYear(event: any) {
+        let arr = event.target.value.split('-');
+        let startDate = arr[1] + "-" + arr[0] + "-01"; 
         dispatch(updateStartPolicyMonthAndYear(event.target.value));
+        dispatch(updateStartPolicyDate(startDate));
     }
     function onClickEndPolicyMonthAndYear(event: any) {
+        let arr = event.target.value.split('-');
+        let endDate = arr[1] + "-" + arr[0] + "-01"; 
         dispatch(updateEndPolicyMonthAndYear(event.target.value));
+        dispatch(updateEndPolicyDate(endDate));
     }
 
     return (    
