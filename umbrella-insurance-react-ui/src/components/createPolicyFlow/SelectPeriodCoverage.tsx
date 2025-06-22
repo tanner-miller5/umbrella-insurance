@@ -102,7 +102,7 @@ export default function SelectPeriodCoverage(){
                 onChange={onClickEndPolicyMonthAndYear}
                 min={minEnd} max={maxEnd}/>
                 <button name="action" type="submit">Next</button>
-                <button onClick={onClickBack}>Back</button>
+                <button onClick={onClickBack} type="button">Back</button>
             </form>
         </div> 
     );

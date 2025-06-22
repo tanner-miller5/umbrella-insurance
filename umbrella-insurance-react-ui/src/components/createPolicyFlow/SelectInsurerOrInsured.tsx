@@ -43,7 +43,7 @@ export default function SelectInsurerOrInsured(){
                 <h1>Are you looking to insure or be insured?</h1>
                 <button className={insurerClassName} onClick={onClickInsurer}>Insurer</button>
                 <button className={insuredClassName} onClick={onClickInsured}>Insured</button>
-                <button onClick={onClickBack}>Back</button>
+                <button onClick={onClickBack} type="button">Back</button>
             </div> 
     );
 };

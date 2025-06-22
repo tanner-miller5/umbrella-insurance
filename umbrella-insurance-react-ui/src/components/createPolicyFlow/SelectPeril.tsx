@@ -71,7 +71,7 @@ export default function SelectPeril(){
         <div className='column2'>
             <h1>Select Peril Type</h1>
             {rows}
-            <button onClick={onClickBack}>Back</button>
+            <button onClick={onClickBack} type="button">Back</button>
         </div> 
     );
 };

@@ -62,7 +62,7 @@ export default function SelectMagnitude(){
                 onChange={onClickRangeChange}
                 min={selectedPerilMinMagnitude} max={selectedPerilMaxMagnitude}/>
                 <button name="action" type="submit">Next</button>
-                <button onClick={onClickBack}>Back</button>
+                <button onClick={onClickBack} type="button">Back</button>
             </form>
         </div> 
     );

@@ -51,7 +51,7 @@ export default function SelectState(){
         function() {
             async function getCitiesByState(stateName: string) {
                 dispatch(updateLoadingState(true));
-                if(!cities) {
+                if(!cities || cities.length === 0) {
                     const citiesResponse = await callReadLocationRestEndpointsByStateName(stateName, env, domain);
                     if(citiesResponse) {
                         dispatch(updateCities(toObject(citiesResponse)));
@@ -89,7 +89,7 @@ export default function SelectState(){
                 <div className='flexInner'>
                     <button name="action" type="submit" >Submit</button>
                 </div>
-                <button onClick={onClickBack}>Back</button>
+                <button onClick={onClickBack} type="button">Back</button>
             </form>
         </div> 
     );

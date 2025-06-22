@@ -266,7 +266,7 @@ export default function SelectCoverageAmount(){
                 <input type="number" id="premiumAmountPicker" name="premiumAmountPicker" value={selectedPremiumAmount}
                     min={0} onChange={onClickPremiumAmountChange}/>
                 <button name="action" type="submit">Next</button>
-                <button onClick={onClickBack}>Back</button>
+                <button onClick={onClickBack} type="button">Back</button>
             </form>
         </div> 
     );
