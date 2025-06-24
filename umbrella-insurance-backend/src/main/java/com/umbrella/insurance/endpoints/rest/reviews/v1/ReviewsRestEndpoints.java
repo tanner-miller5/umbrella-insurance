@@ -97,8 +97,6 @@ public class ReviewsRestEndpoints {
             @RequestParam(required = false) String frontendAppVersion,
             @RequestParam(required = false) String backendAppVersion,
             @RequestAttribute BigInteger currentRequestNumber,
-            @RequestAttribute String access,
-            @RequestHeader String session,
             @RequestParam(required = false) Long userId,
             ServletRequest request) throws Exception {
         Connection connection = null;

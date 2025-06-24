@@ -52,6 +52,7 @@ import com.umbrella.insurance.core.models.geographies.locations.v1.db.LocationPr
 import com.umbrella.insurance.core.models.geographies.states.v1.db.StatePrivilege;
 import com.umbrella.insurance.core.models.geographies.streetAddresses.v1.db.StreetAddressPrivilege;
 import com.umbrella.insurance.core.models.geographies.zipCodes.v1.db.ZipCodePrivilege;
+import com.umbrella.insurance.core.models.items.v1.db.ItemPrivilege;
 import com.umbrella.insurance.core.models.leagues.conferences.divisions.v1.db.DivisionPrivilege;
 import com.umbrella.insurance.core.models.leagues.conferences.v1.db.ConferencePrivilege;
 import com.umbrella.insurance.core.models.leagues.v1.db.LeaguePrivilege;
@@ -70,6 +71,7 @@ import com.umbrella.insurance.core.models.promotions.v1.db.PromotionPrivilege;
 import com.umbrella.insurance.core.models.records.playerRecords.v1.db.PlayerRecordPrivilege;
 import com.umbrella.insurance.core.models.records.teamRecords.v1.db.TeamRecordPrivilege;
 import com.umbrella.insurance.core.models.records.v1.db.RecordPrivilege;
+import com.umbrella.insurance.core.models.reviews.v1.db.ReviewPrivilege;
 import com.umbrella.insurance.core.models.rosters.v1.db.RosterPrivilege;
 import com.umbrella.insurance.core.models.schedules.v1.db.SchedulePrivilege;
 import com.umbrella.insurance.core.models.seasons.seasonTypes.v1.db.SeasonTypePrivilege;
@@ -260,8 +262,9 @@ public class Security {
             UserPrivilege.SOA_PATH + UserPrivilege.SEND_PHONE_VERIFICATION_PATH + ":" + HttpMethodEnum.POST,
             UserPrivilege.SOA_PATH + UserPrivilege.RESET_PASSWORD_PATH + ":" + HttpMethodEnum.PUT,
             StatPrivilege.PATH + ":" + HttpMethodEnum.GET,
-            AppVersionPrivilege.PATH + ":" + HttpMethodEnum.GET
-
+            AppVersionPrivilege.PATH + ":" + HttpMethodEnum.GET,
+            ReviewPrivilege.PATH + ":" + HttpMethodEnum.GET,
+            ItemPrivilege.PATH + ":" + HttpMethodEnum.GET,
     };
 
     // create a list from the array
