@@ -75,6 +75,7 @@ export default function ChangeTwoFactorAuth(){
 
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateTmpTwoFactorAuthType(twoFactorAuthType));
         }, []
     )

@@ -44,6 +44,7 @@ export default function DeleteUser(){
     const dispatch = useDispatch();
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/deleteUser"));
         }, []
     );

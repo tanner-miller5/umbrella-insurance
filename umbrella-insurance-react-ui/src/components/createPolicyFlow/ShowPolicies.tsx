@@ -36,6 +36,7 @@ export default function ShowPolicies() {
     });
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/showPolicies"));
         }, []
     );

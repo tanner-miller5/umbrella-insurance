@@ -29,6 +29,7 @@ export default function SelectMagnitude(){
     }) || selectedPerilMinMagnitude;  
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateSelectedMagnitude(selectedPerilMinMagnitude));
             dispatch(updateCurrentPage("/selectMagnitude"));
         }, []

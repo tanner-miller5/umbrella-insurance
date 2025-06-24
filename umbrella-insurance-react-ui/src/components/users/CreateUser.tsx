@@ -84,6 +84,7 @@ export default function CreateUser() {
     }
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/createUser"));
         }, []
     )

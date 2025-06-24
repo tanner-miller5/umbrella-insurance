@@ -78,6 +78,7 @@ export default function UpdateUser(){
     const dispatch = useDispatch();
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/updateUser"));
         }, []
     );

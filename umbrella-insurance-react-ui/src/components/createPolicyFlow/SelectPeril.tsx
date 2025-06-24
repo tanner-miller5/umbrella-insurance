@@ -26,6 +26,7 @@ export default function SelectPeril(){
     });
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/selectPeril"));
         }, []
     );

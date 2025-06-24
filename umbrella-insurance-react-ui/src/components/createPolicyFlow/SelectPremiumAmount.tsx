@@ -97,6 +97,7 @@ export default function SelectCoverageAmount(){
 
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/selectPremiumAmount"));
         }, []
     );

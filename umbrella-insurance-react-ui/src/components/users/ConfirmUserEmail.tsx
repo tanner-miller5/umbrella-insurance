@@ -90,6 +90,7 @@ export default function ConfirmUserEmail(){
     });
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/confirmUserEmail"));
         }, []
     );

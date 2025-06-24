@@ -23,6 +23,7 @@ export default function SelectPeriodCoverage(){
     }) || "";
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/selectPeriodCoverage"));
         }, []
     );

@@ -46,6 +46,7 @@ export default function EnterPassword(){
 
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/enterPassword"));
         }, []
     );
@@ -144,14 +145,14 @@ export default function EnterPassword(){
                         }}>
                 
                 <div className='flexInner' style={{display:"none"}}>
-                    <label hidden>Username</label>
+                    <label htmlFor="username" hidden>Username</label>
                 </div>
                 <div className='flexInner' hidden>
                     <input id="username" required autoFocus hidden disabled autoComplete="username"
                         name="username" pattern="[A-Za-z0-9]+" placeholder='JohnDoe99' minLength={8}
                     type="text" value={username} onChange={(event)=>dispatch(updateUsername(event.target.value?.toLowerCase()))}/>
                 </div>
-                <label>Enter Password</label>
+                <label htmlFor="password">Enter Password</label>
                 <div className="flexInner">
                     <input required autoFocus 
                         id="password" name="password" type="password" minLength={8} autoComplete="current-password"

@@ -17,6 +17,7 @@ export default function CreatePolicy(){
     });
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/createPolicy"));
         }, []
     );

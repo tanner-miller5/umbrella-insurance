@@ -28,6 +28,7 @@ export default function SignIn(){
     let dispatch = useDispatch();
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/signIn"));
         }, []
     );

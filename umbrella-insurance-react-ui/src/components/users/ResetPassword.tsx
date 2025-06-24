@@ -24,6 +24,7 @@ export default function ResetPassword(){
     const dispatch = useDispatch();
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/sendResetPassword"));
         }, []
     );

@@ -22,6 +22,7 @@ export default function SelectInsurerOrInsured(){
     const insurerClassName = policyFor === "Insurer" ? "liActive" : "";
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/insurerOrInsured"));
         }, []
     );

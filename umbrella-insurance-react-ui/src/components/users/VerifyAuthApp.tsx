@@ -75,6 +75,7 @@ export default function VerifyAuthApp(){
 
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/verifyAuthApp"));
         }, []);
 

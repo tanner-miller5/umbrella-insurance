@@ -40,6 +40,7 @@ export default function ConfirmUserPhone(){
     });
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/confirmUserPhone"));
         }, []
     );

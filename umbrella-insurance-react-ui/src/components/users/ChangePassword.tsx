@@ -53,6 +53,7 @@ export default function ChangePasswordPassword(){
     
     useEffect(
         function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             dispatch(updateCurrentPage("/changePassword"));
         }, []
     )
