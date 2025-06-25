@@ -8,6 +8,7 @@ import { callReadStateRestEndpoints } from "../../endpoints/rest/geographies/sta
 import { updateCities, updateStates } from "../../redux/reducers/GeographyReducer";
 import { toObject } from "../../utils/Parser";
 import { updateLoadingState } from "../../redux/reducers/LoadingReducer";
+import Loading from "../loadings/Loading";
 
 export default function SelectState(){
     const navigate = useNavigate();
@@ -73,9 +74,7 @@ export default function SelectState(){
     )
     if(isLoadingOpen) {
         return (
-            <div className="loadingBackground">
-                <img src="logo-03.png" className="loading"></img>
-            </div>
+            <Loading />
         );
     }
     return (    

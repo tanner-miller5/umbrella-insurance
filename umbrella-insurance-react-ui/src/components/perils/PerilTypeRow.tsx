@@ -14,7 +14,12 @@ export default function PerilTypeRow({perilName,
 
     return (    
         <div>
-            <p >{perilName}: {description}<br/>
-            {scaleName}: Min Magnitude = {minMagnitude} - Max Magnitude = {maxMagnitude}</p>
+            <button style={{cursor: "default"}} >
+                {perilName} <br/>
+                {description}<br/>
+                Scale Name: {scaleName}<br/>
+                Min Magnitude: {minMagnitude}<br/>
+                Max Magnitude: {maxMagnitude}
+            </button>
         </div>);
 }

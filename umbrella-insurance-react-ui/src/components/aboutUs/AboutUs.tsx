@@ -28,7 +28,6 @@ export default function AboutUs(){
                     He currently attends ASU for a Masters in Computer Science. He enjoys walking his dog and hanging out with
                     friends and family. 
                 </p>
-                <img src="marcus_miller_outside.png" width="50%" height="auto"></img>
             </div> 
     );
 };

@@ -48,9 +48,9 @@ export default function PerilTypes(){
             />);
     }
     return (    
-            <div className='column2'>
-                <h1>Peril Types</h1>
-                {rows}
-            </div> 
+        <div className='column2'>
+            <h1>Peril Types</h1>
+            {rows}
+        </div> 
     );
 };

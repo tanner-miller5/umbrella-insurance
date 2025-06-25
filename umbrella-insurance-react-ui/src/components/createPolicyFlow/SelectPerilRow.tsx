@@ -37,8 +37,13 @@ export default function SelectPerilRow({perilName,
                 e.preventDefault();
                 onClickPeril(e);
             }}>
-                <button className={perilClassName} name="action" type="submit">{perilName}: {description}<br/>
-                {scaleName}: Min Magnitude = {minMagnitude} - Max Magnitude = {maxMagnitude}</button>
+                <button className={perilClassName} name="action" type="submit">
+                    {perilName} <br/>
+                    {description}<br/>
+                    Scale Name: {scaleName}<br/>
+                    Min Magnitude: {minMagnitude}<br/>
+                    Max Magnitude: {maxMagnitude}
+                </button>
             </form>
         </div>);
 }

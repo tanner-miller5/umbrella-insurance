@@ -57,7 +57,7 @@ export default function SelectMagnitude(){
                 e.preventDefault();
                 onClickNext(e);
             }}>
-                <h1>Select Magnitude for {selectedPeril}</h1>
+                <h1>Select a Magnitude to insure for {selectedPeril}</h1>
                 <label htmlFor="magnitudePicker">Magnitude={selectedMagnitude}</label>
                 <input type="range" id="magnitudePicker" name="monthPicker" value={selectedMagnitude}
                 onChange={onClickRangeChange}

@@ -20,6 +20,7 @@ import { updateSession } from "../../redux/reducers/UserReducer";
 import { callReadPerilRestEndpointsByPerilName } from "../../endpoints/rest/perils/v1/PerilRestEndpoints";
 import SelectInsurerOrInsured from "./SelectInsurerOrInsured";
 import { callCreatePendingPolicyRestEndpoints } from "../../endpoints/rest/users/policies/pendingPolicies/v1/PendingPolicyRestEndpoints";
+import { callCreatePendingPolicySoaEndpoints } from "../../endpoints/soa/pendingPolicies/v1/PendingPolicySoaEndpoints";
 
 export default function SelectCoverageAmount(){
     const navigate = useNavigate();
@@ -144,7 +145,7 @@ export default function SelectCoverageAmount(){
             if(units) {
                 pendingPolicy.unit = units[0];
             }
-            pendingPolicy = await callCreatePendingPolicyRestEndpoints(sessionCode || "", 
+            pendingPolicy = await callCreatePendingPolicySoaEndpoints(sessionCode || "", 
                 pendingPolicy, env, domain);
             navigate("/showPolicies");
         }

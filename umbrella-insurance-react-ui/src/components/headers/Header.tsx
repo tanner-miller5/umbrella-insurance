@@ -22,6 +22,7 @@ import { callReadReviewRestEndpointsByUserIdAndFrontendAppVersionAndBackendAppVe
 import { toObject } from '../../utils/Parser';
 import { User } from '../../models/users/v1/User';
 import { callReadItemRestEndpoints } from '../../endpoints/rest/items/v1/ItemRestEndpoints';
+import Loading from '../loadings/Loading';
 
 export function toUTCString(date:Date) : string {
     let year = date.getUTCFullYear() + "";
@@ -478,9 +479,15 @@ export default function Header() {
 
     if(isLoadingOpen) {
         return (
-            <div className="loadingBackground">
-                <img src="logo-03.png" className="loading"></img>
-            </div>
+            <>
+                <div className="title" >
+                    <div onClick={onClickLogo}>
+                        <img src="logo-03.png" className="titleImage"></img>
+                    </div>
+                </div>
+                <Loading />
+            </>
+
         );
     }
     return (            

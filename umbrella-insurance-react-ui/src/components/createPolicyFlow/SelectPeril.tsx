@@ -7,6 +7,7 @@ import { callReadPerilRestEndpoints } from '../../endpoints/rest/perils/v1/Peril
 import { useNavigate } from 'react-router-dom';
 import { updateLoadingState } from '../../redux/reducers/LoadingReducer';
 import SelectPerilRow from './SelectPerilRow';
+import Loading from '../loadings/Loading';
 
 export default function SelectPeril(){
     const navigate = useNavigate();
@@ -63,14 +64,12 @@ export default function SelectPeril(){
     }
     if(isLoadingOpen) {
         return (
-            <div className="loadingBackground">
-                <img src="logo-03.png" className="loading"></img>
-            </div>
+            <Loading />
         );
     }
     return (    
         <div className='column2'>
-            <h1>Select Peril Type</h1>
+            <h1>Select a Peril Type</h1>
             {rows}
             <button onClick={onClickBack} type="button">Back</button>
         </div> 

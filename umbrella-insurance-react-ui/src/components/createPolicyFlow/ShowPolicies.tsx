@@ -8,6 +8,7 @@ import { updateLoadingState } from '../../redux/reducers/LoadingReducer';
 import { updatePendingPolicies } from '../../redux/reducers/UserReducer';
 import ShowPendingPolicyRow from './ShowPendingPolicyRow';
 import { callReadPendingPolicyRestEndpointsByUserId } from '../../endpoints/rest/users/policies/pendingPolicies/v1/PendingPolicyRestEndpoints';
+import Loading from '../loadings/Loading';
 
 export default function ShowPolicies() {
     const navigate = useNavigate();
@@ -69,9 +70,7 @@ export default function ShowPolicies() {
 
     if(isLoadingOpen) {
         return (
-            <div className="loadingBackground">
-                <img src="logo-03.png" className="loading"></img>
-            </div>
+            <Loading />
         );
     }
     return (    
