@@ -94,7 +94,7 @@ var domain: string = "http://localhost:8080";
 
     test('call read accountBalance', async () => {
         var accountBalanceResponse: AccountBalance[] | undefined = await callReadAccountBalanceRestEndpointsByAccountBalanceId(
-            accountBalanceId || 1, env, domain) || [];
+            "", accountBalanceId || 1, env, domain) || [];
         expect(accountBalance.accountBalanceType).toBe(accountBalanceResponse[0].accountBalanceType);
         expect(accountBalance.accountBalanceValue).toBe(accountBalanceResponse[0].accountBalanceValue);
         expect(accountBalance.updatedDateTime).toBe(accountBalanceResponse[0].updatedDateTime);

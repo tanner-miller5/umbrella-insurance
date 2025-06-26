@@ -136,6 +136,7 @@ export default function Header() {
     let aboutUsClassName = defaultButtonStyle;
     let perilTypesClassName = defaultButtonStyle;
     let createPolicyClassName = defaultButtonStyle;
+    let showPoliciesClassName = defaultButtonStyle;
     if (currentPage === '/faq') {
         faqClassName = activeButtonStyle;
     } else if (currentPage === '/announcements') {
@@ -194,6 +195,8 @@ export default function Header() {
         perilTypesClassName = activeButtonStyle;
     } else if (currentPage === '/createPolicy') {
         createPolicyClassName = activeButtonStyle;
+    } else if (currentPage === '/showPolicies') {
+        showPoliciesClassName = activeButtonStyle;
     }
     const env = useSelector((state:RootState) => {
         return state.environment.env;
@@ -456,6 +459,10 @@ export default function Header() {
         closeNavMenu();
         navigate("/createPolicy");
     }
+    function onClickShowPolicies() {
+        closeNavMenu();
+        navigate("/showPolicies");
+    }
     let endDateTime: string | undefined = useSelector((state: RootState)=>{
         return state.user.endDateTime;
     });
@@ -534,6 +541,8 @@ export default function Header() {
             <li onClick={onClickAboutUs} className={aboutUsClassName}>About Us</li>
             <li onClick={onClickPerilTypes} className={perilTypesClassName}>Types of Perils</li>
             {didUserLoad && <li onClick={onClickCreatePolicy} className={createPolicyClassName}>Create Policy</li>}
+            {didUserLoad && <li onClick={onClickShowPolicies} className={showPoliciesClassName}>Show Policies</li>}
+            
         </ul>
     </>)
 };

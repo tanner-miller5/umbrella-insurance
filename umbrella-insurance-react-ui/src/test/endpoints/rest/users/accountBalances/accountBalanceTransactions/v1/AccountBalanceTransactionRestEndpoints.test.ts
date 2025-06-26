@@ -57,7 +57,7 @@ describe.skip('accountBalanceTransaction endpoint tests', () => {
         expect(accountBalanceTransactionStatus.accountBalanceTransactionStatusName).toBe(accountBalanceTransactionStatusResponse.accountBalanceTransactionStatusName);
 
         var accountBalanceTransactionResponse: AccountBalanceTransaction = await callCreateAccountBalanceTransactionRestEndpoints(
-            accountBalanceTransaction, env, domain);
+            "",accountBalanceTransaction, env, domain);
         accountBalanceTransactionId = accountBalanceTransactionResponse.id;
         expect(accountBalanceTransaction.accountBalanceTransactionName).toBe(accountBalanceTransactionResponse.accountBalanceTransactionName);
         expect(accountBalanceTransaction.accountBalanceTransactionStatus).toBe(accountBalanceTransactionResponse.accountBalanceTransactionStatus);
@@ -69,7 +69,7 @@ describe.skip('accountBalanceTransaction endpoint tests', () => {
 
     test('call read accountBalanceTransaction', async () => {
         var accountBalanceTransactionResponse: AccountBalanceTransaction[] | undefined = await callReadAccountBalanceTransactionRestEndpointsByAccountBalanceTransactionId(
-            accountBalanceTransactionId || 1, env, domain) || [];
+            "",accountBalanceTransactionId || 1, env, domain) || [];
         expect(accountBalanceTransaction.accountBalanceTransactionName).toBe(accountBalanceTransactionResponse[0].accountBalanceTransactionName);
         expect(accountBalanceTransaction.accountBalanceTransactionStatus).toBe(accountBalanceTransactionResponse[0].accountBalanceTransactionStatus);
         expect(accountBalanceTransaction.amount).toBe(accountBalanceTransactionResponse[0].amount);

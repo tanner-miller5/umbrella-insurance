@@ -113,6 +113,7 @@ public class PendingPolicySoaEndpoints {
                 accountBalanceTransaction.setAccountBalanceTransactionType(accountBalanceTransactionType.get());
                 accountBalanceTransaction.setAccountBalanceTransactionStatus(accountBalanceTransactionStatus.get());
                 accountBalanceTransaction = accountBalanceTransactionService.saveAccountBalanceTransaction(accountBalanceTransaction);
+                pendingPolicy.setAccountBalanceEscrowTransaction(accountBalanceTransaction);
             } else if(pendingPolicy.getPendingPolicyType().equals(PendingPolicyTypeEnum.INSURED) &&
                     accountBalance.get().getAccountBalanceValue() < pendingPolicy.getPremiumAmount()) {
                 throw new Exception("Insufficient account balance");
@@ -129,6 +130,7 @@ public class PendingPolicySoaEndpoints {
                 accountBalanceTransaction.setAccountBalanceTransactionType(accountBalanceTransactionType.get());
                 accountBalanceTransaction.setAccountBalanceTransactionStatus(accountBalanceTransactionStatus.get());
                 accountBalanceTransaction = accountBalanceTransactionService.saveAccountBalanceTransaction(accountBalanceTransaction);
+                pendingPolicy.setAccountBalanceEscrowTransaction(accountBalanceTransaction);
             }
             
             request.setAttribute("requestBody", pendingPolicy);

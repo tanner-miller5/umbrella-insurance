@@ -7,9 +7,12 @@ import { callCreateLoggingRestEndpoints } from "../../../../logging/v1/LoggingRe
 
 
 export async function callCreateAccountBalanceTransactionRestEndpoints(
-    accountBalanceTransaction: AccountBalanceTransaction, env: string, domain: string): Promise<AccountBalanceTransaction>  {
+    session: string,
+    accountBalanceTransaction: AccountBalanceTransaction, 
+    env: string, domain: string): Promise<AccountBalanceTransaction>  {
     let config:AxiosRequestConfig = {
         headers: {
+            "session": session,
             "Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json',
         }
@@ -23,9 +26,11 @@ export async function callCreateAccountBalanceTransactionRestEndpoints(
 }
 
 export async function callReadAccountBalanceTransactionRestEndpointsByAccountBalanceTransactionId(
+    session: string,
     accountBalanceTransactionId: number, env: string, domain: string): Promise<AccountBalanceTransaction[] | undefined> {
     let config: AxiosRequestConfig = {
         headers: {
+            "session": session,
             "Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json',
         }
@@ -53,9 +58,11 @@ export async function callReadAccountBalanceTransactionRestEndpointsByAccountBal
 }
 
 export async function callReadAccountBalanceTransactionRestEndpointsByAccountBalanceTransactionName(
+    session: string,
     accountBalanceTransactionName: string, env: string, domain: string): Promise<AccountBalanceTransaction[] | undefined> {
     let config: AxiosRequestConfig = {
         headers: {
+            "session": session,
             "Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json',
         }

@@ -91,6 +91,8 @@ public class AccountBalanceRestEndpoints {
                     accountBalanceList = new ArrayList<>();
                     accountBalanceList.add(accountBalance.get());
                 }
+            } else if(userId != null) {
+                accountBalanceList = accountBalanceService.getAccountBalancesByUserId(userId);
             } else {
                 throw new NotImplementedException("This read query is not implemented accountBalance ");
             }

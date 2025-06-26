@@ -16,11 +16,14 @@ import { callReadPendingPolicyStateRestEndpoints } from "../../endpoints/rest/us
 import { callReadUnitsRestEndpoint } from "../../endpoints/rest/units/v1/UnitRestEndpoints";
 import { Session } from "../../models/users/sessions/v1/Session";
 import { callReadSessionRestEndpointsBySessionCode } from "../../endpoints/rest/users/sessions/v1/SessionRestEndpoints";
-import { updateSession } from "../../redux/reducers/UserReducer";
+import { updateButterBucksAccountValue, updateSession, updateUsdAccountValue } from "../../redux/reducers/UserReducer";
 import { callReadPerilRestEndpointsByPerilName } from "../../endpoints/rest/perils/v1/PerilRestEndpoints";
 import SelectInsurerOrInsured from "./SelectInsurerOrInsured";
 import { callCreatePendingPolicyRestEndpoints } from "../../endpoints/rest/users/policies/pendingPolicies/v1/PendingPolicyRestEndpoints";
 import { callCreatePendingPolicySoaEndpoints } from "../../endpoints/soa/pendingPolicies/v1/PendingPolicySoaEndpoints";
+import { callReadAccountBalanceRestEndpointsByUserId } from "../../endpoints/rest/users/accountBalances/v1/AccountBalanceRestEndpoints";
+import { UnitEnum } from "../../models/units/v1/UnitEnum";
+import { AccountBalanceTypeEnum } from "../../models/users/accountBalances/accountBalanceTypes/v1/AccountBalanceTypeEnum";
 
 export default function SelectCoverageAmount(){
     const navigate = useNavigate();
@@ -34,6 +37,9 @@ export default function SelectCoverageAmount(){
     });  
     const username = useSelector((state: RootState) => {
         return state.user.username;
+    });
+    const userId = useSelector((state: RootState) => {
+        return state.user.userId;
     });
     const selectedPremiumAmount = useSelector((state: RootState) => {
         return state.policy.selectedPremiumAmount;
@@ -106,6 +112,7 @@ export default function SelectCoverageAmount(){
         if(username === undefined) {
             navigate("/signIn");
         } else {
+            dispatch(updateLoadingState(true));
             if(Number(selectedPremiumAmount)>= Number(selectedCoverageAmount)) {
                 dispatch(updateIsErrorOpen(true));
                 dispatch(updateErrorMessage("Premium Amount can't be greater than coverage amount"));
@@ -147,7 +154,26 @@ export default function SelectCoverageAmount(){
             }
             pendingPolicy = await callCreatePendingPolicySoaEndpoints(sessionCode || "", 
                 pendingPolicy, env, domain);
+
+            let accountBalances = await callReadAccountBalanceRestEndpointsByUserId(sessionCode || "", 
+                userId || 0, env, domain);
+            
+            if(accountBalances && accountBalances.length === 2) {
+                if(accountBalances[0].unit?.unitName === UnitEnum.usd.toString() &&
+                    accountBalances[0].accountBalanceType?.accountBalanceTypeName  || ""
+                    === AccountBalanceTypeEnum.balance.toString()) {
+                    dispatch(updateUsdAccountValue(accountBalances[0].accountBalanceValue));
+                }
+                if(accountBalances[1].unit?.unitName === UnitEnum.butter_bucks.toString() &&
+                    accountBalances[1].accountBalanceType?.accountBalanceTypeName  || ""
+                    === AccountBalanceTypeEnum.balance.toString()) {
+                    dispatch(updateButterBucksAccountValue(accountBalances[1].accountBalanceValue));
+                }
+            }
+  
+
             navigate("/showPolicies");
+            dispatch(updateLoadingState(true));
         }
     }
 

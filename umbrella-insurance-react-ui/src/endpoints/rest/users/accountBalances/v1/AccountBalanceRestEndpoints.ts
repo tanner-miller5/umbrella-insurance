@@ -23,9 +23,11 @@ export async function callCreateAccountBalanceRestEndpoints(
 }
 
 export async function callReadAccountBalanceRestEndpointsByAccountBalanceId(
+    session: string,
     accountBalanceId: number, env: string, domain: string): Promise<AccountBalance[] | undefined> {
     let config: AxiosRequestConfig = {
         headers: {
+            "session": session,
             "Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json',
         }
@@ -52,10 +54,44 @@ export async function callReadAccountBalanceRestEndpointsByAccountBalanceId(
     return accountBalances;
 }
 
+export async function callReadAccountBalanceRestEndpointsByUserId(
+    session: string,
+    userId: number, env: string, domain: string): Promise<AccountBalance[] | undefined> {
+    let config: AxiosRequestConfig = {
+        headers: {
+            "session": session,
+            "Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json',
+        }
+    }
+
+    let url = `${domain}/rest/accountBalances/v1?env=${env}&userId=${userId}`;
+    let accountBalances: AccountBalance[] | undefined = [];
+    try {
+        let readAccountBalanceListResponse: AxiosResponse<AccountBalance[]> = await axios.get(url, config);
+        let accountBalanceList = readAccountBalanceListResponse.data;
+        for(let i = 0; i < accountBalanceList.length; i++) {
+            accountBalances[i] = new AccountBalance(accountBalanceList[i]);
+        }
+    } catch(e:any) {
+        let loggingMessage: LoggingMessage = new LoggingMessage();        
+        const url = window.location.href;         
+        loggingMessage.appName = 'umbrella-insurance-frontend';
+        loggingMessage.callingLoggerName = url;        
+        loggingMessage.loggingPayload = `ERROR:${e.message}`;         
+        loggingMessage.logLevel = "ERROR";         
+        callCreateLoggingRestEndpoints(loggingMessage, env, domain);         
+        console.error(loggingMessage.loggingPayload);
+    }
+    return accountBalances;
+}
+
 export async function callReadAccountBalanceRestEndpointsByAccountBalanceName(
+    session: string,
     accountBalanceName: string, env: string, domain: string): Promise<AccountBalance[] | undefined> {
     let config: AxiosRequestConfig = {
         headers: {
+            "session": session,
             "Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json',
         }

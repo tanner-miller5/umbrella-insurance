@@ -23,8 +23,8 @@ export default function AboutUs(){
     return (    
             <div className='column2'>
                 <h1>About Us</h1>
-                <p>Marcus Miller started the Umbrella Insurance project to help communities that
-                    lack traditional insurance coverage options. Marcus enjoys hiking, rock climbing, scuba diving, and golfing. 
+                <p>Tanner Miller started the Umbrella Insurance project to help communities that
+                    lack traditional insurance coverage options. Tanner enjoys hiking, rock climbing, scuba diving, and golfing. 
                     He currently attends ASU for a Masters in Computer Science. He enjoys walking his dog and hanging out with
                     friends and family. 
                 </p>

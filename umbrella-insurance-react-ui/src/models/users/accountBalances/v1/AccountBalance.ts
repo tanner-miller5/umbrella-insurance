@@ -1,3 +1,4 @@
+import { Unit } from "../../../units/v1/Unit";
 import { User } from "../../v1/User";
 import { AccountBalanceType } from "../accountBalanceTypes/v1/AccountBalanceType";
 
@@ -7,6 +8,7 @@ export class AccountBalance {
     accountBalanceType?: AccountBalanceType;
     updatedDateTime?: string;
     user?: User;
+    unit?: Unit;
 
     constructor(obj?:any) {
         if(obj) {
@@ -24,6 +26,9 @@ export class AccountBalance {
             }
             if(obj?.user) {
                 this.user = new User(obj.user);
+            }
+            if(obj?.unit) {
+                this.unit = new Unit(obj.unit);
             }
         }
     }
