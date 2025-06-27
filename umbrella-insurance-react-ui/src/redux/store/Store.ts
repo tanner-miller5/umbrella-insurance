@@ -10,10 +10,11 @@ import { faqSlice, FaqState } from "../reducers/FaqReducer";
 import { reviewSlice, ReviewState } from "../reducers/ReviewsReducer";
 import { policySlice, PolicyState } from "../reducers/PolicyReducer";
 import { geographySlice, GeographyState } from "../reducers/GeographyReducer";
+import { accountBalanceTransactionSlice, AccountBalanceTransactionState } from "../reducers/AccountBalanceTransactionReducer";
 
 export const rootReducer = combineSlices(counterSlice, userSlice, loadingSlice, 
     environmentSlice, appSlice, statSlice, announcementSlice, faqSlice, reviewSlice,
-    policySlice, geographySlice);
+    policySlice, geographySlice, accountBalanceTransactionSlice);
 
 export class RootState {
     counter: CounterState;
@@ -27,6 +28,7 @@ export class RootState {
     review: ReviewState;
     policy: PolicyState;
     geography: GeographyState;
+    accountBalanceTransaction: AccountBalanceTransactionState;
     constructor() {
         this.counter = new CounterState();
         this.user = new UserState();
@@ -39,6 +41,7 @@ export class RootState {
         this.review = new ReviewState();
         this.policy = new PolicyState();
         this.geography = new GeographyState();
+        this.accountBalanceTransaction = new AccountBalanceTransactionState();
     }
 }
 

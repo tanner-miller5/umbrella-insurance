@@ -57,6 +57,38 @@ export async function callReadAccountBalanceTransactionRestEndpointsByAccountBal
     return accountBalanceTransactions;
 }
 
+export async function callReadAccountBalanceTransactionRestEndpointsByUserId(
+    session: string,
+    userId: number, env: string, domain: string): Promise<AccountBalanceTransaction[] | undefined> {
+    let config: AxiosRequestConfig = {
+        headers: {
+            "session": session,
+            "Access-Control-Allow-Origin": "*",
+            'Content-Type': 'application/json',
+        }
+    }
+
+    let url = `${domain}/rest/accountBalanceTransactions/v1?env=${env}&userId=${userId}`;
+    let accountBalanceTransactions: AccountBalanceTransaction[] | undefined = [];
+    try {
+        let readAccountBalanceTransactionListResponse: AxiosResponse<AccountBalanceTransaction[]> = await axios.get(url, config);
+        let accountBalanceTransactionList = readAccountBalanceTransactionListResponse.data;
+        for(let i = 0; i < accountBalanceTransactionList.length; i++) {
+            accountBalanceTransactions[i] = new AccountBalanceTransaction(accountBalanceTransactionList[i]);
+        }
+    } catch(e:any) {
+        let loggingMessage: LoggingMessage = new LoggingMessage();        
+        const url = window.location.href;         
+        loggingMessage.appName = 'umbrella-insurance-frontend';
+        loggingMessage.callingLoggerName = url;        
+        loggingMessage.loggingPayload = `ERROR:${e.message}`;         
+        loggingMessage.logLevel = "ERROR";         
+        callCreateLoggingRestEndpoints(loggingMessage, env, domain);         
+        console.error(loggingMessage.loggingPayload);
+    }
+    return accountBalanceTransactions;
+}
+
 export async function callReadAccountBalanceTransactionRestEndpointsByAccountBalanceTransactionName(
     session: string,
     accountBalanceTransactionName: string, env: string, domain: string): Promise<AccountBalanceTransaction[] | undefined> {

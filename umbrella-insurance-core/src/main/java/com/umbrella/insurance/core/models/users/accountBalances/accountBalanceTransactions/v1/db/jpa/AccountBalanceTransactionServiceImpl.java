@@ -51,4 +51,9 @@ public class AccountBalanceTransactionServiceImpl  implements AccountBalanceTran
         accountBalanceTransactionRepository.deleteAccountBalanceTransactionByAccountBalanceTransactionName(
                 accountBalanceTransactionName);
     }
+
+    @Override
+    public List<AccountBalanceTransaction> getAccountBalanceTransactionsByUserId(Long userId) {
+        return accountBalanceTransactionRepository.findByUserId(userId);
+    }
 }

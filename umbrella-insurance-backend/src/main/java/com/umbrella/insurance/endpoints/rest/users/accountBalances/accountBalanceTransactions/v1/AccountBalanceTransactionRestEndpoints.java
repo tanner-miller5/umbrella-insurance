@@ -63,6 +63,7 @@ public class AccountBalanceTransactionRestEndpoints {
             @RequestParam String env,
             @RequestParam(required = false) Long accountBalanceTransactionId,
             @RequestParam(required = false) String accountBalanceTransactionName,
+            @RequestParam(required = false) Long userId,
             @RequestAttribute BigInteger currentRequestNumber,
             ServletRequest request) throws Exception {
         Connection connection = null;
@@ -89,6 +90,8 @@ public class AccountBalanceTransactionRestEndpoints {
                     accountBalanceTransactionList = new ArrayList<>();
                     accountBalanceTransactionList.add(accountBalanceTransaction.get());
                 }
+            } else if (userId != null) {
+                accountBalanceTransactionList = accountBalanceTransactionService.getAccountBalanceTransactionsByUserId(userId);
             } else {
                 throw new NotImplementedException("This read query is not implemented accountBalanceTransaction ");
             }

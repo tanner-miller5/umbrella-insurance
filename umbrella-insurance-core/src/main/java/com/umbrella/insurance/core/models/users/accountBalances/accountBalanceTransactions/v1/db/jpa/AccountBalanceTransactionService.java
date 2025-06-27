@@ -15,4 +15,5 @@ public interface AccountBalanceTransactionService {
     Optional<AccountBalanceTransaction> getAccountBalanceTransactionByAccountBalanceTransactionId(
             Long accountBalanceTransactionId);
     void deleteAccountBalanceTransactionByAccountBalanceTransactionName(String accountBalanceTransactionName);
+    List<AccountBalanceTransaction> getAccountBalanceTransactionsByUserId(Long userId);
 }

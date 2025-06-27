@@ -137,6 +137,7 @@ export default function Header() {
     let perilTypesClassName = defaultButtonStyle;
     let createPolicyClassName = defaultButtonStyle;
     let showPoliciesClassName = defaultButtonStyle;
+    let accountBalanceTransactionsClassName = defaultButtonStyle;
     if (currentPage === '/faq') {
         faqClassName = activeButtonStyle;
     } else if (currentPage === '/announcements') {
@@ -197,6 +198,8 @@ export default function Header() {
         createPolicyClassName = activeButtonStyle;
     } else if (currentPage === '/showPolicies') {
         showPoliciesClassName = activeButtonStyle;
+    } else if (currentPage === '/accountBalanceTransactions') {
+        accountBalanceTransactionsClassName = activeButtonStyle;
     }
     const env = useSelector((state:RootState) => {
         return state.environment.env;
@@ -324,7 +327,12 @@ export default function Header() {
     }
     function onClickHome() {
         closeNavMenu();
-        navigate("/");
+        if(userId) {
+            navigate("/createPolicy");
+        } else {
+            navigate("/");
+        }
+
     }
     function onClickFaq() {
         closeNavMenu();
@@ -463,6 +471,10 @@ export default function Header() {
         closeNavMenu();
         navigate("/showPolicies");
     }
+    function onClickShowAccountBalanceTransactions() {
+        closeNavMenu();
+        navigate("/accountBalanceTransactions");
+    }
     let endDateTime: string | undefined = useSelector((state: RootState)=>{
         return state.user.endDateTime;
     });
@@ -479,7 +491,7 @@ export default function Header() {
                 dispatch(updateWarningMessage("Signed out!"));
                 dispatch(updateIsWarningOpen(true));
             }
-        }, 30000);
+        }, 29000);
         // Cleanup function to clear the interval
         return () => clearInterval(intervalId);
     },[endDateTime]);
@@ -542,7 +554,7 @@ export default function Header() {
             <li onClick={onClickPerilTypes} className={perilTypesClassName}>Types of Perils</li>
             {didUserLoad && <li onClick={onClickCreatePolicy} className={createPolicyClassName}>Create Policy</li>}
             {didUserLoad && <li onClick={onClickShowPolicies} className={showPoliciesClassName}>Show Policies</li>}
-            
+            {didUserLoad && <li onClick={onClickShowAccountBalanceTransactions} className={accountBalanceTransactionsClassName}>Account Balance Transactions</li>}
         </ul>
     </>)
 };

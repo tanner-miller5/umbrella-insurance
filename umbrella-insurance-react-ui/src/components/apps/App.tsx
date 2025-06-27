@@ -58,6 +58,8 @@ import SelectMagnitude from '../createPolicyFlow/SelectMagnitude';
 import SelectCoverageAmount from '../createPolicyFlow/SelectCoverageAmount';
 import SelectPremiumAmount from '../createPolicyFlow/SelectPremiumAmount';
 import ShowPolicies from '../createPolicyFlow/ShowPolicies';
+import { AccountBalanceTransaction } from '../../models/users/accountBalances/accountBalanceTransactions/v1/AccountBalanceTransaction';
+import AccountBalanceTransactions from '../transactions/AccountBalanceTransactions';
 
 function App() {
 
@@ -148,6 +150,7 @@ function App() {
         <Route path="selectCoverageAmount" element={<SelectCoverageAmount />} />
         <Route path="selectPremiumAmount" element={<SelectPremiumAmount />} />
         <Route path="showPolicies" element={<ShowPolicies />} />
+        <Route path="accountBalanceTransactions" element={<AccountBalanceTransactions />} />
         {/* Using path="*"" means "match anything", so this route
               acts like a catch-all for URLs that we don't have explicit
               routes for. */}
